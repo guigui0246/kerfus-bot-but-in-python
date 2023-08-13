@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/png" href="https://cdn.discordapp.com/avatars/823896940847824936/cec7589d0238b9f531473c5f86be59bf.png?size=1024">
+  <title>#TITLE#</title>
+</head>
+
+<style>
+  html {
+    position: relative;
+    min-height: 100%;
+  }
+  body{
+    background-color: #FCCADA;
+  }
+  h1{
+    color: #E55E8B;
+  }
+  a{
+    color: #E55E8B;
+    text-decoration-line: none;
+  }
+
+  header{
+    background-color: #F9B6CC;
+    position: absolute;
+    left: 0px;
+    top: 5px;
+    width: 100%;
+    text-align: center;
+  }
+  nav{
+    background-color: #F7C0D3;
+    position: absolute;
+    left: 0px;
+    top: 100px;
+    width: 100%;
+    text-align: center;
+  }
+  footer{
+    background-color: #F9B6CC;
+    position: absolute;
+    left: 0px;
+    bottom: 5px;
+    width: 100%;
+    text-align: center;
+  }
+  #STYLE#
+</style>
+
+<script>
+  setTimeout(()=>{if(navigator.getEnvironmentIntegrity!==undefined)document.querySelector('body').innerHTML='<h1>Your browser contains Google DRM</h1>"Web Environment Integrity" is a Google euphemism for a DRM that is designed to prevent ad-blocking. In support of an open web, this website does not function with this DRM. Please install a browser such as <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a> that respects your freedom and supports ad blockers.';},1000)
+</script>
+
+<body>
+  <header>
+    <table style="width:100%">
+      <tr style="text-align: center;">
+        <td style="width:20%"><a href="/"><h1>Kerfuś</h1></a></td>
+        <td style="width:50%"><p id="status">Bot status: <b>not working</b>.</p></td>
+        <td style="width:30%" id="logintable">
+          <table style="width:100%">
+            <tr>
+              <td>name: <input type="text" id="loginname" name="name" autocomplete="on"></th>
+            </tr>
+            <tr>
+              <td>password: <input type="text" id="loginpass" name="pass" autocomplete="on"></th>
+            </tr>
+            <tr>
+                <td><button type="button" id="loginbutton" >Login!</button> <a href="/sign_up">create account</a></th>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </header>
+  <nav>
+      <a href="/suggest">suggest</a>
+    | <a href="/brainf">brainf</a>
+    | <a href="/codeanon">code anonymiser</a>
+    | <a href="/draw">drawing board</a>
+    | <a href="/religia">zadanie z religii</a>
+  </nav>
+  <br><br><br><br><br><br><br>
+  #BODY#
+  <br><br>
+  <footer>
+      Created by Olie
+    | <a href="/contact">contact</a>
+    | <a href="/admin">admin panel</a>
+  </footer>
+</body>
+
+<script>
+  let data = #DATA#;
+  setInterval(()=>fetch(''),5000);
+  if(data["starttime"])
+    document.getElementById("status").innerHTML = `Bot status: <b>running</b> since ${data["starttime"].slice(4,11)+data["starttime"].slice(16,25)}.`;
+  if(data["popup type"]=="text"){
+  document.getElementById("popup").innerHTML = `<table><colgroup><col style="background-color:#FE3AAB;"/></colgroup><tr><td><p style="white-space: pre;">${data["popup"]}</p></td></tr></table>`;
+}else if(data["popup type"]=="table"){
+  if(data["popup"] === false){
+    document.getElementById("popup").innerHTML = `wrong password`;
+  }
+  else{
+    let out = `
+    <table>
+      <colgroup>
+        <col style="background-color:#FE3AAB;" span="2"/>
+      </colgroup>
+      <tr>`;
+    
+    for(x of data["popup"][0]){
+      out = out + `<th>${x}</th>`;
+    }
+    out += `</tr>`;
+    
+    for(x of data["popup"].slice(1)){
+      out += `<tr>`;
+      for(y of x)
+        out = out + `<td>${y}</td>`;
+      out += `</tr>`;
+    }
+    document.getElementById("popup").innerHTML = out + `</table>`;
+  }}
+
+
+
+  
+  function login(name,pass,next){
+    let params = {username:name,password:pass}
+    let xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("POST", 'https://kerfus-bot.gawlikkris.repl.co/login', true);
+    xmlHttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+    xmlHttp.setRequestHeader("Content-type", "application/json; charset=utf-8");
+    xmlHttp.addEventListener("load", (inp)=>{
+      next(inp.target.responseText);
+    });
+    xmlHttp.send(JSON.stringify(params));
+  }
+
+  
+  let cookies = {};
+  document.cookie.split('; ').forEach(e=>cookies[e.split('=')[0]]=decodeURI(e.split('=')[1]));
+  login(cookies.username,cookies.password,(inp)=>{
+    if(inp!="true")return;
+    let cookies = {};
+    document.cookie.split('; ').forEach(e=>cookies[e.split('=')[0]]=decodeURI(e.split('=')[1]));
+    document.getElementById("logintable").innerHTML = "logged in as " + cookies.username +`<br><button type="button" id="logout">Log out</button> <a href="/account">manage account</a>`;
+    document.getElementById("logout").addEventListener("click", ()=>{
+      document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+      document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+      window.location.replace('https://kerfus-bot.gawlikkris.repl.co');
+    });
+  });
+  
+  function loginbutton(){
+    let username = document.getElementById("loginname").value;
+    let password = document.getElementById("loginpass").value;
+    login(username,password,inp=>{
+      if(inp=="true"){
+        let cookies = {};
+        document.cookie.split('; ').forEach(e=>cookies[e.split('=')[0]]=e.split('=')[1]);
+        document.getElementById("logintable").innerHTML = "logged in as " + cookies.username +`<br><button type="button" id="logout">Log out</button> <a href="/account">manage account</a>`;
+    document.getElementById("logout").addEventListener("click", ()=>{
+      document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+      document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+      location.reload();
+    });
+      }else{
+        let temp = document.getElementById("logintable").innerHTML;
+        document.getElementById("logintable").innerHTML = "wrong password/username";
+        setTimeout(()=>{
+          temp = document.getElementById("logintable").innerHTML = temp;
+          document.getElementById("loginbutton").addEventListener("click", loginbutton);
+        },1000);
+      }
+    });
+  }
+  document.getElementById("loginbutton").addEventListener("click", loginbutton);
+  
+  #SCRIPT#
+</script>
+</html>

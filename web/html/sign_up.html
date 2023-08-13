@@ -1,0 +1,26 @@
+TITLE##
+Kerfuś - create account
+##STYLE##
+##BODY##
+<p id="popup"></p>
+
+name: <input type="text" id="name" ><br>
+password: <input type="text" id="password" ><br>
+signup code: <input type="text" id="code" ><br>
+<button type="button" id="signup">Sign up!</button><br>
+##SCRIPT##
+document.getElementById("signup").addEventListener("click", ()=>{
+  let data = {
+    name:document.getElementById("name").value,
+    password:document.getElementById("password").value,
+    code:document.getElementById("code").value
+  };
+  let xmlHttp = new XMLHttpRequest();
+  xmlHttp.open("POST", 'https://kerfus-bot.gawlikkris.repl.co/signup', true);
+  xmlHttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+  xmlHttp.setRequestHeader("Content-type", "application/json; charset=utf-8");
+  xmlHttp.addEventListener("load", inp=>{
+    document.getElementById("popup").innerHTML = `<table><colgroup><col style="background-color:#FE3AAB;"/></colgroup><tr><td><p style="white-space: pre;">${inp.target.responseText}</p></td></tr></table>`;
+  });
+  xmlHttp.send(JSON.stringify(data));
+});

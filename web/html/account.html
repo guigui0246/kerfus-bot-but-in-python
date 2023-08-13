@@ -1,0 +1,21 @@
+TITLE##
+Kerfuś - account
+##STYLE##
+##BODY##
+<b>change password:</b><br>
+new: <input type="text" id="newpass" name="pass"><br>
+<button type="button" id="changepass">Change password</button><br>
+##SCRIPT##
+document.getElementById("changepass").addEventListener("click", ()=>{
+  let newpass = document.getElementById("newpass").value;
+  let xmlHttp = new XMLHttpRequest();
+  xmlHttp.open("POST", 'https://kerfus-bot.gawlikkris.repl.co/account', true);
+  xmlHttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+  xmlHttp.setRequestHeader("Content-type", "application/json; charset=utf-8");
+  xmlHttp.addEventListener("load", inp=>{
+    document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    location.reload();
+  });
+  xmlHttp.send(JSON.stringify({newpass:newpass}));
+});

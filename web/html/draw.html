@@ -1,0 +1,48 @@
+TITLE##
+Kerfuś - test
+##STYLE##
+##BODY##
+<p id='map'></p>
+
+<textarea id='inp'>input color here</textarea>
+##SCRIPT##
+//<script>
+let map = "";
+let n=20,m=20;
+for(let x=0;x<n;x++){
+  map += "<tr>";
+  for(let y=0;y<m;y++)
+    map += `<td id="${x*m+y}"></td>`
+  map += "</tr>";
+}
+document.getElementById("map").innerHTML = `<table cellspacing="0" cellpadding="10">${map}</table>`;
+
+let xmlHttp;
+for(let x=0;x<n;x++){
+  for(let y=0;y<m;y++){
+    document.getElementById(x*m+y*1).onclick=()=>{
+      let newcolor = document.getElementById('inp').value.trim().slice(0,6)
+      document.getElementById(m*x+1*y).style= `background-color: #${newcolor};`;
+      xmlHttp.open("GET", 'https://kerfus-bot.gawlikkris.repl.co/draw1?type='+(x*m+y*1)+'&col='+newcolor);
+      xmlHttp.send();
+
+    }
+  }
+}
+
+
+function update(){
+  let test = JSON.parse(xmlHttp.responseText);
+  for(let x in test)
+    for(let y in test[x])
+      document.getElementById(m*x+1*y).style= `background-color: #${test[x][y]};`;
+}
+function get(){
+  xmlHttp = new XMLHttpRequest();
+  xmlHttp.open("GET", 'https://kerfus-bot.gawlikkris.repl.co/draw1?type=-1', true);
+  xmlHttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+  xmlHttp.addEventListener("load", update);
+  xmlHttp.send();
+}
+get();
+setInterval(get,3000);

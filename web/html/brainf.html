@@ -1,0 +1,67 @@
+TITLE##
+Kerfuś - brainfuck
+##STYLE##
+##BODY##
+<p id="popup"></p>
+
+<form id="commandform" action="runbf" target="_self" method="get">
+  <label for="sett">settings:          </label>
+  <input type="text" id="sett" name="sett"><br>
+  <label for="runtime">runtime:           </label>
+  <input type="text" id="runtime" name="runtime"><br>
+  <label for="input">input:         </label>
+  <input type="text" id="input" name="input"><br>
+  <label for="code">code:         </label>
+  <input type="text" id="code" name="code"><br>
+  <input type="submit" value="Run!">
+</form>
+
+<table>
+  <colgroup>
+      <col style="background-color:#E3AABD;" span="3"/>
+    </colgroup>
+  <tr>
+    <th>. </th>
+    <th>Explanation</th>
+  </tr>
+  <tr>
+    <td>settings</td>
+    <td>
+      this is a custom thing, not native to brainfuck
+      <br><br>
+      option 1 is for better input handling,<br>
+      split input by spaces and load numbers,<br>
+      instead of ascii values
+      <br><br>
+      option 2 is for output, works similary to input
+      <br><br>
+      option 3 is for storing bigger numbers,<br>
+      normally cell data loops around at 256,<br>
+      with this setting the range is (-2b,2b)
+      <br><br>
+      set it to 000 for vanilla brainfuck
+    </td>
+  </tr>
+  <tr>
+    <td>runtime</td>
+    <td>say how many commands should be executed,<br>-1 for infinite</td>
+  </tr>
+  <tr>
+    <td>input</td>
+    <td>standard input for the program</td>
+  </tr>
+  <tr>
+    <td>code</td>
+    <td>
+      + increases the pointed value by 1 <br>
+      - decreases the pointed value by 1<br>
+      > move the pointer to the right<br>
+      < move the pointer to the left <br>
+      , input a value<br>
+      . output a value<br>
+      [ jump to the corresponding ] if the value is 0<br>
+      ] jump back if the value isnt 0
+    </td>
+  </tr>
+</table>
+##SCRIPT##

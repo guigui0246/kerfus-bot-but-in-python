@@ -1,0 +1,811 @@
+[2023-03-08T18:01:51.322Z] 771709136051372032: addreaction&54&mały wredny gnojku
+[2023-03-08T18:01:51.322Z] 771709136051372032: addreaction&54&gnojek
+[2023-03-08T18:01:51.322Z] 438767282328436737: seereactions&54
+[2023-03-08T18:01:51.322Z] 438767282328436737: deletemessage&54
+[2023-03-08T18:01:51.322Z] 438767282328436737: addmessage&https://media.discordapp.net/attachments/1021709353872531466/1082955489186431088/IMG_0645.png&gnojek&scp-pl-305&gnojk
+[2023-03-10T06:51:01.629Z] 771709136051372032: addreaction&54&gnojem
+[2023-03-11T20:50:25.838Z] 438767282328436737: https://www.reddit.com/r/AnarchyChess/comments/11onmim/bing_en_passant/?utm_source=share&utm_medium=android_app&utm_name=androidcss&utm_term=1&utm_content=share_button
+[2023-03-13T05:55:51.950Z] 771709136051372032: seereactions&54
+[2023-03-13T05:55:51.950Z] 771709136051372032: addreaction&54&gnojkiem
+[2023-03-13T05:55:51.950Z] 771709136051372032: seereactions&54
+[2023-03-13T05:55:51.950Z] 438767282328436737: https://www.reddit.com/r/egg_irl/comments/11pojtw/eggirl/?utm_source=share&utm_medium=android_app&utm_name=androidcss&utm_term=1&utm_content=share_button
+[2023-03-16T04:34:30.947Z] 438767282328436737: https://www.reddit.com/r/196/comments/11siztr/finnsterule/?utm_source=share&utm_medium=android_app&utm_name=androidcss&utm_term=1&utm_content=share_button
+[2023-03-16T16:09:46.773Z] 438767282328436737: ```cpp
+#include <bits/stdc++.h>
+//#include <Windows.h>
+using namespace std;
+int n,k,nn,**wyj;
+
+
+
+list<int>poz1;
+list<bool>tab1;
+int *poz;
+bool *tab;
+bool gett(int i){
+    return tab[i];/*
+    list<bool>::iterator it=tab1.begin();
+    advance(it, i);
+    return *it;//*/
+}
+void sett(int i,bool w){
+    tab[i]=w;/*
+    list<bool>::iterator it=tab1.begin();
+    advance(it, i);
+    *it=w;//*/
+}
+bool getp(int i){
+    return poz[i];
+}
+void setp(int i,bool w){
+    poz[i]=w;
+}
+
+
+
+
+
+void remov(int a,int b){
+    static int l=0;
+    for(int i=a;i<a+b;i++){
+        wyj[l][i-a]=getp(i);
+    }
+    l+=1;
+    for(int i=a;i<n-b;i++){
+        sett(i,gett(i+b));
+        setp(i,getp(i+b));
+    }
+    //cout<<endl;
+    nn-=b;
+}
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cin>>n>>k;
+    tab=new bool[n];
+    poz=new int[n];
+    wyj = new int*[n/(k+1)];
+    for(int i=0;i<n/(k+1);i++){
+        wyj[i]=new int[k+1];
+    }
+    string s;
+    cin>>s;
+    for(int i=0;i<n;i++){
+        setp(i,i);
+        sett(i,s[i]-'b');
+    }
+    nn=n;
+    while(true){
+        int prev=0,cur=0,carpos=-1;
+        for(int i=0;i<n;i++){
+            if(gett(i)){
+                prev=cur;
+                cur=0;
+                if(prev>=k){
+                    remov(i-k,k+1);
+                    break;
+                }
+                carpos=i;
+            }else{
+                cur+=1;
+                if(carpos+1&&prev+cur>=k){
+                    remov(carpos-prev,k+1);
+                    break;
+                }
+            }
+        }
+        //cout<<nn;
+        if(!nn)break;
+        //Sleep(500);
+    }
+    for(int i=n/(k+1);i>0;i--){
+        for(int j=0;j<k+1;j++){
+            cout<<wyj[i-1][j]+1<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}```
+[2023-03-16T18:25:10.504Z] 438767282328436737: https://www.amazon.com/Aneco-Thigh-Socks-Stockings-Cosplay/dp/B08R85WTK4/ref=mp_s_a_1_7?keywords=programming%2Bsocks&qid=1678999049&sr=8-7&th=1&psc=1
+[2023-03-16T18:25:10.504Z] 771709136051372032: https://twitter.com/f1nn5ter/status/1636458137560424477?s=46&t=HdlK_O0cK6r66zrQskYkGw
+[2023-03-16T18:25:10.504Z] 771709136051372032: https://twitter.com/youare_bot/status/1636626467542167552?s=46&t=HdlK_O0cK6r66zrQskYkGw
+[2023-03-20T10:18:59.572Z] 438767282328436737: więc mój nick ma kolor roli \<@&1015624475057860609>
+[2023-03-20T23:31:29.078Z] 438767282328436737: https://www.reddit.com/r/21stCenturyHumour/comments/11xcd8c/_/?utm_source=share&utm_medium=android_app&utm_name=androidcss&utm_term=1&utm_content=share_button
+[2023-03-21T23:27:29.213Z] 438767282328436737: addmessage&ქõἶῆ Γhპ ὗõἶძ&void
+[2023-03-21T23:27:29.213Z] 771709136051372032: <@&1053694161464860682> jak zdacie maturki to macie udowadniać transfobom że trans kobiety to kobiety i vice versa
+[2023-03-23T07:43:04.185Z] 438767282328436737: findmessage&amogus
+[2023-03-23T07:43:04.185Z] 438767282328436737: seereactions&6
+[2023-03-23T07:43:04.185Z] 438767282328436737: removemessage&6
+[2023-03-23T07:43:04.185Z] 438767282328436737: deletemessage &6
+[2023-03-23T07:43:04.185Z] 438767282328436737: deletemessage&6
+[2023-03-23T20:57:38.920Z] 438767282328436737: https://www.reddit.com/r/discordVideos/comments/1200pyc/mmagiccc/?utm_source=share&utm_medium=android_app&utm_name=androidcss&utm_term=1&utm_content=share_button
+[2023-03-24T16:23:00.769Z] 438767282328436737: addmessage&https://media.discordapp.net/attachments/1060254610679419002/1088405923694915614/RDT_20230323_1114528664962478902074756_edit_592643305380399.jpg&amog&among&wśród
+[2023-03-24T19:48:39.478Z] 438767282328436737: findmessage&amogus
+[2023-03-24T19:48:39.478Z] 438767282328436737: addmessage&test&t1&t2
+[2023-03-24T19:54:40.043Z] 438767282328436737: addmessage&test&t1&t2
+[2023-03-24T19:54:40.043Z] 438767282328436737: findmessage&t1
+[2023-03-24T19:54:40.043Z] 438767282328436737: appendmessage&56&sus
+[2023-03-24T19:54:40.043Z] 438767282328436737: addreaction&56&t3
+[2023-03-24T19:54:40.043Z] 438767282328436737: changemessage&56&amogus
+[2023-03-24T19:58:08.274Z] 438767282328436737: findmessage&t2
+[2023-03-24T19:58:08.274Z] 438767282328436737: deletemessage&56
+[2023-03-27T02:50:58.245Z] 438767282328436737: addmessage&Nope, but kinda. It comes from old Germanic language, "wiljakwemô", that contains of the words "wiljaną", "want" and "kwemaną", "come".  In Swedish  it’s called "vilja" and "komma", but it’s also called "välkommen", "väl" means "well" ("ä" is often pronounced like "e".) and "kommen" means come. "väl" and "kommen" are different forms of the words "vilja" and "komma" (Like "run" and "ran".)
+In conclusion:
+Yes, it is, but in another language.&welcom&witaj
+[2023-03-27T02:50:58.245Z] 438767282328436737: https://www.reddit.com/r/discordVideos/comments/123arwx/this_is_the_longest_version/?utm_source=share&utm_medium=android_app&utm_name=androidcss&utm_term=1&utm_content=share_button
+[2023-03-27T02:50:58.245Z] 438767282328436737: https://www.reddit.com/r/spaghetti/comments/10vrprt/need_a_sauce_recipe_no_tomato_sauce/?utm_source=share&utm_medium=android_app&utm_name=androidcss&utm_term=1&utm_content=share_button
+[2023-03-27T02:50:58.245Z] 438767282328436737: https://www.reddit.com/r/spaghetti/comments/10vrprt/need_a_sauce_recipe_no_tomato_sauce/?utm_source=share&utm_medium=android_app&utm_name=androidcss&utm_term=1&utm_content=share_button
+[2023-03-27T02:50:58.245Z] 438767282328436737: https://www.reddit.com/r/spaghetti/comments/10vrprt/need_a_sauce_recipe_no_tomato_sauce/jdudsgd?utm_medium=android_app&utm_source=share&context=3
+[2023-03-27T02:50:58.245Z] 438767282328436737: ```cpp
+#include <iostream>
+#include <stdlib.h>
+#include <time.h>
+using namespace std;
+string alfabet = "ABCDEFGHIJKLMNOPRSTQUWXYZabcdefghijklmnoprstquwxyz0123456789)!@#$%^&*(,.<>/?;:|[]{}-=_+";
+char **board = new char*[4], **wyjscie = new char*[4];
+char *litery;
+int a;
+
+void wypisz(){
+    for(int i=0;i<4;i++){
+        for(int j=0;j<4;j++){
+            cout << wyjscie[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
+bool sprawdz(){
+    for(int i=0;i<4;i++){
+        for(int j=0;j<4;j++){
+            if(wyjscie[i][j] != ' ')
+                return false;
+        }
+    }
+    return true;
+}
+
+int main(){
+    srand(time(NULL));
+    litery = new char[16];
+    a = 0;
+    for(int i=0;i<8;i++){
+        a += rand() % 10+1;
+        litery[i*2] = alfabet[a];
+        litery[i*2+1] = alfabet[a];
+    }
+    for(int i=0;i<16;i++){
+        a = rand() % 16;
+        char temp = litery[i];
+        litery[i] = litery[a];
+        litery[a] = temp;
+    }
+    for(int i=0;i<4;i++){
+        board[i] = new char[4];
+        wyjscie[i] = new char[4];
+        for(int j=0;j<4;j++){
+            board[i][j] = litery[i*4+j];
+            wyjscie[i][j] = '#';
+        }
+    }
+    delete litery;
+    int x1,x2,y1,y2;
+    while(true){
+        wypisz();
+        cin >> x1 >> y1;
+        if(wyjscie[--x1][--y1] == ' ') { cout << "to miejsce jest puste\n"; continue;}
+        wyjscie[x1][y1] = board[x1][y1];
+        wypisz();
+        cin >> x2 >> y2;
+        if(wyjscie[--x2][--y2] == ' ') { cout << "to miejsce jest puste\n"; continue;}
+        wyjscie[x2][y2] = board[x2][y2];
+        wypisz();
+        if(board[x1][y1] != board[x2][y2]){
+            wyjscie[x1][y1] = wyjscie[x2][y2] = '#';
+            continue;
+        }
+        wyjscie[x1][y1] = wyjscie[x2][y2] = ' ';
+        if(sprawdz()){
+            break;
+        }
+    }
+    cout << "Gratulacje, wygrales!\n";
+    return 0;
+}```
+nwm co było na lekcji, ale tu macie gotowy
+[2023-03-28T05:56:19.856Z] 438767282328436737: addmessage&https://cdn.discordapp.com/attachments/824229861320425473/1089868179414720513/IMG_20230201_064923.jpg&lucyn
+[2023-03-28T20:33:37.951Z] 438767282328436737: addmessage&Mam jedną pierdoloną schizofrenię
+Zaburzenia emocjonalne, proszę puść to na antenie
+Powiem Ci, że to fakt, powiesz mi, że to obciach
+Pierdolę Cię i tak rozejdziesz się po łokciach
+Bo ja jestem Bogiem, uświadom to sobie
+Słyszysz słowa od których włos jeży się na głowie
+O rany rany, jestem niepokonany
+H, I, P, H, O, P - bez reszty oddany
+Przejebany, potencjał niewyczerpany
+Chyba w DNA on był mi dany
+Czekaj Fokus, Rah jeszcze oszaleją wszystkie pizdy
+Gdy poznają mój urok osobisty
+Duszę artysty, to jaki jestem skromny
+I bystry i szczery do bólu, że aż przezroczysty
+I wiesz co mnie boli? Że w głowach się pierdoli
+Zakłócony pokój ludziom dobrej woli
+Jestem Bogiem
+Uświadom to sobie, sobie
+Ty też jesteś Bogiem
+Tylko wyobraź to sobie, sobie
+W pełni poczytalny za czyny swe odpowiedzialny
+Jak Ty nieprzemakalny, pędzi tu jak halny
+Wyprzedza świat realny, nawiedza wirtualny
+System binarny, materiał łatwopalny
+Da przepływ momentalny, energii cios werbalny
+Kandydat potencjalny na występ teatralny
+Doznaje szoku w 2000 roku za to spalmy
+Pora na elaborat eksperymentalny
+W sposób niekonwencjonalny głoszę treści, słuchaj proszę
+Trafiam Cię w punkt centralny, wiedz że niepewności spłoszę
+Nastroszę się, gniew boski jest nieobliczalny
+Unoszę Cię, bo z góry widok kapitalny
+I idealny obraz jak krajobraz tropikalny
+Monstrualny krach
+Rah nieprzewidywalny
+Jestem Bogiem
+Uświadom to sobie, sobie
+Ty też jesteś Bogiem
+Tylko wyobraź to sobie, sobie
+Widzę, widzę, widzę więcej wiem więcej, tak to jest mniej więcej
+Uczę się sztuki życia - Hip hop to mój sensei
+I rzucam tym, a to jak kauczuk
+Czysta technika, żadnego &co masz?
+[2023-03-28T20:33:37.951Z] 438767282328436737: findmessage&co masz?
+[2023-03-28T20:33:37.951Z] 438767282328436737: appendmessage&58&fałszu
+Niuanse, sensacyjne seanse
+W bezsensie sens jest jedynym awansem
+Balansem w naturze, równowagi korekta
+Unoszę się ponad to na specjalnych efektach
+Cel, S, M, O, K na kartki biel
+A, N, B, L, O, K, E, J, B, L
+Le-le-lekko jak hel napełniam trwogą
+I zapewniam jak wrogom kontakt z podłogą
+Twą dozgonną chęć dorównania swym bogom
+Ogrom PFK podąża swą drogą
+Przysięgam na ogon, uwierzysz w co zechcę
+A poczujesz jeszcze od tych lepsze dreszcze
+Jestem Bogiem
+Uświadom to sobie, sobie
+Ty też jesteś Bogiem
+Tylko wyobraź to sobie, sobie
+[2023-03-28T20:33:37.951Z] 438767282328436737: addreaction&58&mam
+[2023-03-28T20:49:31.161Z] 438767282328436737: seereactions&34
+[2023-03-28T20:52:04.022Z] 438767282328436737: seereactions&34
+[2023-03-28T20:52:04.022Z] 438767282328436737: seereactions&34
+[2023-03-28T20:58:13.728Z] 438767282328436737: seereactions&34
+[2023-03-30T08:30:26.086Z] 438767282328436737: https://www.reddit.com/r/discordVideos/comments/1263r7z/america/?utm_source=share&utm_medium=android_app&utm_name=androidcss&utm_term=1&utm_content=share_button
+[2023-03-30T08:30:26.086Z] 438767282328436737: addmessage&⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠄⠈⠉⠁⠢⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠊⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠆⠀⠀⠀⠀⠀⠠⠂⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⢀⠀⢀⣀⣰⣤⣤⡠⠤⢀⢀⠅⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⡠⠀⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠢⣀⠀⠀⠀⠀⠀⠀ ⡠⠐⠈⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⢄⠀⠀⠀⠀ ⠇⠀⠀⠀⠀⢀⡀⢠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠢⠀ ⠈⠐⠂⠈⠁⠀⠀⠸⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⡀⠀⠀⠀⠀⠀⠘ ⠀⠀⠀⠀⠀⠀⠀⠀⡆⠀⠀⠀⠀⠀⠀⠀⢇⠀⠀⠉⠉⢂⠀⠀⢸ ⠀⠀⠀⠀⠀⠀⠀⠀⣇⠄⠂⠈⠉⠉⠐⠂⢔⠉⠈⠉⠑⡀⢑⠤⢼ ⠀⠀⠀⠀⠀⠀⠀⢠⠁⠀⠀⠀⠀⠀⠀⠀⠀⠑⡀⠀⠀⢠⡇⠀⡸ ⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠀⠀⢘⠃⠁⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⡘⠀⣠⠂⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠘⡀⠀⠀⠈⠂⠤⠤⠔⠈⠍⠁⠌⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⡀⠀⠀⠀⠀⠀⠀⠀⠀⠜⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢂⠀⠀⠀⠀⠀⠈⢊⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠢⠀⠀⠀⠀⠀⠀⠆⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠡⡀⠀⠀⠀⠀⠈⡄⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡎⠂⡀⠀⠀⠀⢠⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠘⠢⠀⠀⠈⡄⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠤⢀⡇⠀⡄⠀⠑⡀⢀⠰⡀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⢄⡈⠈⠇⠀⠀⠐⡁⠀⠈⡕⡂ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠐⡀⠀⢠⠁ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⢸⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣄⣠⠸⠀&czarnuch
+[2023-03-31T09:47:28.594Z] 438767282328436737: https://www.reddit.com/r/doodoofard/comments/127dfo7/new_acc_new_me_we_not_up/?utm_source=share&utm_medium=android_app&utm_name=androidcss&utm_term=1&utm_content=share_button
+[2023-04-03T09:10:47.137Z] 438767282328436737: https://cdn.discordapp.com/emojis/1074404168116219956.webp?size=48&quality=lossless
+[2023-04-03T09:10:47.137Z] 438767282328436737: addmessage&https://media.discordapp.net/attachments/546763235051700314/800382921441280021/image0_1.gif&allah&praise
+[2023-04-03T09:10:47.137Z] 438767282328436737: https://cdn.discordapp.com/emojis/1080839969087688724.webp?size=48&quality=lossless
+[2023-04-03T09:10:47.137Z] 771709136051372032: <@&1053683784853237843>
+[2023-04-04T17:18:48.642Z] 438767282328436737: https://www.reddit.com/r/mhhzlhxkfsfan?utm_medium=android_app&utm_source=share
+[2023-04-06T07:48:34.021Z] 438767282328436737: &amogus[2023-04-06T13:12:57.395Z] 438767282328436737: https://www.reddit.com/r/Polska/comments/12dd5tj/polska_prawica_przyjazna_lgbt/?utm_source=share&utm_medium=android_app&utm_name=androidcss&utm_term=1&utm_content=share_buttonadded to server id 1063934410581360761[2023-04-11T09:04:37.067Z] 438767282328436737: test[2023-04-11T09:04:37.067Z] 438767282328436737: addmessage&See, as funny as that joke about french incompetence is, the French fully expected the Germans to invade them through Belgium. Indeed, the Maginot line did extend all the way to the sea, though it wasn't as extensive along the Belgian border as it was in Elsace-Lorraine. The french plan for WW2 was to use Maginot not as a defensive position, but to convince the Germans to invade through Belgium, where they had prepared defensive positions intended to hold the Germans off, which were indeed manned by the French at all times until Britain sabotaged the Franco-Belgian alliance and forced Belgium into neutrality, so the plan was adjusted so as to station troops on the border, advance rapidly, and then hold the Germans off from there. This, however, was the first of many mistakes in french strategic planning. They had utterly underestimated the speed at which the German Army would advance into Belgium, such that many of the defensive positions that were supposed to hold the Germans off had been overrun before the French had the chance to man them.
+
+The second big mistake was not to take reports about German tanks in the Ardennes seriously, because yes, they did have reports about this. But once again, the speed and agility of German tanks had been underestimated, and the report dismissed. (keep in mind that the French didn't have dedicated tank divisions the way the Germans did; they intended to use their tanks the same way they had in WW1, as big land ships that would break through enemy trenches and open up a chance for infantry to advance, rather than the tip of a rapid offensive that was more in line with the mobile warfare that had proven itself successful for Germany in the latter years of WW1).
+
+To understand how Rommel's Dash to the Channel happened, we need to talk about commanding by order vs. commanding by task. See, there are two basic models to lead an army. The French followed the doctrine of command by order. In this model&maginot[2023-04-11T09:04:37.067Z] 438767282328436737: findmessage&maginot[2023-04-11T09:04:37.067Z] 438767282328436737: appendmessage&61&, an officer is merely an extension of the generals in HQ. These generals draw up plans, and the officer is to make sure it is executed. In this model, officers have fairly little ability to act on their own, as their job is to carry out the orders exactly as HQ gives them. This method of command had proven effective for the French during WW1, and they intended to fight WW2 the same way they'd fought WW1. The drawback of this system is its lack of flexibility. If an officer sees an opportunity on the battlefield, he cannot just exploit it. He needs to report it up the chain of command, then wait until he gets orders to do so. The problem with this, of course, is that the chance to exploit this opportunity might pass in the meantime.
+
+The German army, on the other hand, was commanded by task. Herein, an officer receives orders from HQ, say, to capture a specific position, and what material he has available, but how to do so is left up to the officer in the field, with the assumption being that the officer knows the situation infront of him better than a general in an HQ hundreds of kilometers behind the front could ever hope to. Indeed, if an officer spotted an opportunity, but he would have to go against his orders to exploit it, it was actually tolerated within the German army to exploit this opportunity, even if it was in violation od direct orders, provided the results justify the action. The drawback of this, of course, was that the high autonomy of individual officers might cause difficult situations if, for instance, two officers decided to go against their orders at the same time, and caused a big gap in their position as a result.
+
+With that out[2023-04-11T09:04:37.067Z] 438767282328436737: appendmessage&61& of the way, let's get to the Dash to the Channel. Rommel saw an opportunity infront of him, a gap in the enemy lines. It was well within his authority to ignore the orders he had and charge into this gap instead, and charge he did. He just kept going at full speed after realizing that noone was there to oppose him. Now, normally, this would have gotten Rommel encircled. All it takes is for a single division to block the road he came from, and his entire division would have been doomed. However, here's the thing: After both sides realized what Rommel had just done, mobile German units rushed into the corridor he'd cut into the French lines to reinforce it, while french officers waited for HQ to give them the order to cut Rommel off. By the time that order came, German units had already reinforced Rommel's corridor, and any counterattacks were unsuccessful. In the end, Rommel just kept going until he reached Calais, and when he did, effectively encircled half the army that opposed them, eventually resulting in the evacuation in Dunkirk (aswell as several smaller, lesser known evacuations), and after that, victory in France was but a matter of time, as the anglo-british forces were now severely outnumbered.[2023-04-11T09:04:37.067Z] 438767282328436737: maginot[2023-04-11T09:04:37.067Z] 438767282328436737: maginot's lie[2023-04-11T20:02:08.653Z] 438767282328436737: https://www.reddit.com/r/me_irlgbt/comments/12ifgl8/me_irlgbt/?utm_source=share&utm_medium=android_app&utm_name=androidcss&utm_term=1&utm_content=share_button[2023-04-14T18:20:32.257Z] 438767282328436737: https://cdn.discordapp.com/emojis/845466369302724658.webp?size=48&name=blobsunglasses&quality=lossless[2023-04-14T19:35:31.101Z] 438767282328436737: https://cdn.discordapp.com/emojis/1086317777645752380.webp?size=48&name=goober&quality=lossless[2023-04-15T17:58:58.886Z] 438767282328436737: ```cpp
+//ban
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    int n, *tab;
+    cin>>n;
+    tab = new int[n];
+    bool *usiad = new bool[n];
+    for(int i=0;i<n;i++){
+        cin>>tab[i];
+        tab[i]--;
+        usiad[i] = false;
+    }
+    int out = 0;
+    while(true){
+        bool stop = true;
+        int start = 0;
+        for(int i=0;i<n;i++){
+            stop &= usiad[i];
+            if(!usiad[i]){
+                start = i;
+                break;
+            }
+        }
+        if (stop == true) break;
+        out += 1;
+        int nex = tab[start];
+        usiad[start] = true;
+        while(nex!=start){
+            usiad[nex] = true;
+            nex = tab[nex];
+        }
+    }
+    cout<<out;
+}```[2023-04-18T14:24:25.940Z] 771709136051372032: Ej <@&1029095748735860768> kojarzycie te klipy z gry które durak pokazywał[2023-04-19T10:49:27.623Z] 771709136051372032: <@&1029095748735860768> to jest z excela?[2023-04-20T20:23:32.296Z] 438767282328436737: https://www.reddit.com/r/JustMonika/comments/12t4rbu/my_love_message_to_monika_written_by_artillery/?utm_source=share&utm_medium=android_app&utm_name=androidcss&utm_term=1&utm_content=share_button[2023-04-25T04:57:59.272Z] 771709136051372032: findmessage&kerfuś[2023-04-25T04:57:59.272Z] 771709136051372032: addmessage&chichot&https://imgur.com/a/fo8Ohem[2023-04-25T04:57:59.272Z] 438767282328436737: addmessage&https://imgur.com/a/fo8Ohem&chichot[2023-04-25T04:57:59.272Z] 771709136051372032: addmessage&chichot[2023-04-25T07:33:31.545Z] 438767282328436737: findmessage&chichot[2023-04-25T07:33:31.545Z] 438767282328436737: deletemessage&62[2023-04-25T07:33:31.545Z] 438767282328436737: addmessage&https://media.discordapp.net/attachments/1060254610679419002/1100393500228464691/1iLwCEN_d.webp&chichot[2023-04-26T23:18:41.057Z] 438767282328436737: addmessage&https://media.discordapp.net/attachments/1060254610679419002/1101064288799576074/IMG_20220924_153253.jpg&fion&lettuc&cabbag&kapu[2023-04-26T23:18:41.057Z] 438767282328436737: findmessage&fiona lucyna[2023-04-26T23:18:41.057Z] 438767282328436737: addreaction&57&puss[2023-04-26T23:18:41.057Z] 438767282328436737: findmessage&fiona[2023-04-26T23:18:41.057Z] 438767282328436737: addreaction&63&puss[2023-04-26T23:18:41.057Z] 438767282328436737: findmessage&chichot[2023-04-26T23:18:41.057Z] 438767282328436737: seereactions&62[2023-04-26T23:18:41.057Z] 438767282328436737: addreaction&62&smiech&puss[2023-04-27T08:42:13.373Z] 438767282328436737: addmessage&https://media.discordapp.net/attachments/1015624476429398067/1101065423966982225/IMG_20230124_223227207.jpg&nutk&pussy[2023-04-27T08:42:13.373Z] 438767282328436737: addreaction&62&śmiech[2023-04-27T08:42:13.373Z] 438767282328436737: addreaction&62&puss[2023-04-27T08:42:13.373Z] 438767282328436737: seereactions&62[2023-04-27T08:48:02.622Z] 438767282328436737: seereactions&62[2023-04-28T04:29:11.815Z] 438767282328436737: addmessage&Fanatyk chatGPT
+
+Mój stary to fanatyk chatGPT. Pół mieszkania zajebane serwerami, kablami i książkami o sztucznej inteligencji, najgorzej. Średnio raz w miesiącu ktoś pośliznie się na stosach książek, wpadnie na odłączoną wtyczkę i trzeba zszywać w szpitalu. W swoim dwudziestodwuletnim życiu już z 10 razy byłem na takim zabiegu. Tydzień temu poszedłem na jakieś losowe badania, to baba z recepcji jak mnie tylko zobaczyła, to kazała buta ściągać xD, bo myślała, że znowu na wtyczkę nadepnąłem.
+
+Druga połowa mieszkania zajebana „Journal of Artificial Intelligence Research”, „IEEE Transactions on Neural Networks &ai[2023-04-28T04:29:11.815Z] 438767282328436737: findmessage&ai[2023-04-30T13:09:33.116Z] 438767282328436737: https://www.reddit.com/r/Minecraft/comments/133ip50/am_i_the_only_that_sees_a_floating_head/?utm_source=share&utm_medium=android_app&utm_name=androidcss&utm_term=1&utm_content=share_button[2023-05-02T01:45:30.643Z] 438767282328436737: addmessage&Biedronki mają, ze wszystkich owadów, najbardziej chujowy software, jaki istnieje. Serio kurwa. Bo taka na ten przykład pszczoła - zapierdala, szuka kwiatów, nawiguje na słońce, zbiera nektar, znosi do gniazda - no w chuj skomplikowane. Zresztą, kurwa - mucha. Mucha też musi wyczuwać woń gówna i ścierwa, nawigować, szukać pożywienia, złożyć jaja w jakimś dobrym ścierwie. Wcale nie takie proste. A jak działa biedronka? Otóż pierwszy punkt algorytmu biedronki brzmi:
+
+    Zapierdalaj w górę. Nie wiem, czy bawiliście się kiedyś biedronkami. Jak się to weźmie na rękę, to zawsze idzie w góre. Zawsze kurwa. Zawsze. Jak się jej w połowie drogi odwróci rękę, to się zatrzyma i zmieni kierunek, żeby isć w górę. Można se tak ruszać pińćset razy i zawsze jebana w górę. Biedronka to taki jebany owadzi odpowiednik gradientu. Zawsze się kieruje w górę zbocza. Ma to w chuj zabawne konsekwencje, jak się biedronkę postawi na płaskiej powierzchni. Zaczyna iść w przypadkowym kierunku, bo kurwa nie ma jak iść pod górę. Najlepiej jak dojdzie do krawędzi. Wtedy ten jej zjebany mósk cannot into logika, tylko zaczyna iść wzdłuż krawędzi. W dół nie zejdzie, bo kurwa algorytm, a na płaskie też nie wróci, chuj wie czemu.
+
+Kiedyś z kolegą ze studiów znaleźliśmy na wykładzie biedronkę. Ławki w auli były w chuj długie, na jakieś 30 m. Mówię mu: pacz kurwa i położyłem biedronkę na ławce. Doszła do krawędzi i idzie wzdłuż. Idzie kurwa i idzie, doszła do końca, skręciła i dalej wzdłuż kolejnej krawędzi, a potem jeszcze raz i szła znowu w naszą stronę. 4&biedron[2023-05-03T01:22:20.561Z] 438767282328436737: https://www.reddit.com/r/wholesomeyuri/comments/136b0s2/may_squishes_the_bridget_by_umaibeja_guilty_gear/jinuys0?utm_source=share&utm_medium=android_app&utm_name=androidcss&utm_term=1&utm_content=share_button[2023-05-03T01:22:20.561Z] 438767282328436737: addmessage&https://paczaizm.pl/content/wp-content/uploads/no-tak-bylo-nie-zmyslam-urban-w-stroju-biskupa.jpg&tak byl[2023-05-03T01:22:20.561Z] 438767282328436737: findmessage&gpt[2023-05-03T01:22:20.561Z] 438767282328436737: findmessage&ai[2023-05-03T01:22:20.561Z] 438767282328436737: seereactions&65[2023-05-03T01:22:20.561Z] 438767282328436737: deletemessage&65[2023-05-03T01:22:20.561Z] 438767282328436737: addmessage&Mój stary to fanatyk chatGPT. Pół mieszkania zajebane serwerami, kablami i książkami o sztucznej inteligencji, najgorzej. Średnio raz w miesiącu ktoś pośliznie się na stosach książek, wpadnie na odłączoną wtyczkę i trzeba zszywać w szpitalu. W swoim dwudziestodwuletnim życiu już z 10 razy byłem na takim zabiegu. Tydzień temu poszedłem na jakieś losowe badania, to baba z recepcji jak mnie tylko zobaczyła, to kazała buta ściągać xD, bo myślała, że znowu na wtyczkę nadepnąłem.
+
+Druga połowa mieszkania zajebana „Journal of Artificial Intelligence Research”, „IEEE Transactions on Neural Networks and Learning Systems”, „Machine Learning” xD itp. Co tydzień ojciec robi objazd po wszystkich księgarniach w mieście, żeby skompletować wszystkie wydawnictwa o sztucznej inteligencji. Byłem na tyle głupi, że nauczyłem go into internety, bo myślałem, że trochę pieniędzy zaoszczędzimy na tych publikacjach, ale teraz nie dosyć, że je kupuje, to jeszcze siedzi na jakichś forach dla entuzjastów NLP i AI i kręci gównoburze z innymi pasjonatami o najlepsze modele i algorytmy itp. Potrafi drzeć mordę do monitora albo wypierdolić klawiaturę za okno. Kiedyś ojciec mnie wkurwił, to założyłem tam konto i go trollowałem, pisząc w jego tematach jakieś losowe głupoty, typu „chatboty jedzą gówno” albo „programowanie to bułka z masem”. Matka nie nadążała z gotowaniem obiadów na uspokojenie. Aha, ma już na forum rangę AI Guru, za najebanie 10 tysięcy postów.
+
+Jak jest ciepło, to w każdy weekend zapierdala do biblioteki po darmowy prąd, żeby trenować modele i testować swoje pomysły. Od jakichś pięciu lat w każdą niedzielę podczas obiadu zamiast ze sobą rozmawiamy z modelami AI, a ojciec pierdoli o zaletach interaktywnej komunikacji. Jak się dostałem na studia, to stary przez tydzień pierdolił, że to dzięki temu, że rozmawiam z botami, bo zwiększam swoją biegłość w języku naturalnym.
+
+&ai&gpt[2023-05-03T01:22:20.561Z] 438767282328436737: findmessage&ai[2023-05-03T01:22:20.561Z] 438767282328436737: appendmessage&67&Co sobotę budzi ze swoim znajomym Mirkiem całą rodzinę o czwartej w nocy, bo robią hackaton - napierdalają przez cały dzień w klawiatury z niebieskimi przełącznikami, a wentylatory na wszystkich gpu w domu kręcą się tak szybko, że zastanawiam się czy cały dom nie odleci.
+
+Przy jedzeniu zawsze pierdoli o chatGPT i za każdym razem temat schodzi w końcu na OpenAI, ojciec sam się nakręca i dostaje strasznego bólu dupy durr, niedostatecznie rozwijają chatGPT hurr, robi się przy tym cały czerwony i odchodzi od stołu, klnąc, i idzie czytać Wikipedię o sztucznej inteligencji, żeby się uspokoić.
+
+W tym roku sam sobie kupił na święta kolejną nową kartę graficzną. Oczywiście do wigilii nie wytrzymał, tylko już wczoraj ją zamontował i testował w dużym pokoju. Ubrał się w swój cały strój programisty (czyli same bokserki, bo w domu strasznie gorąco jak lecą treningi) i siedział cały dzień, testując swoje nowe narzędzia na chatGPT. Obiad (pizzę) też przy nim zjadł [cool][cześć].
+
+Gdyby mnie na długość ręki dopuścili do wszystkich kodów źródłowych na świecie, to bym wziął i wpierdolił na publicznego GitHuba.
+
+Jak któregoś razu, jeszcze w podbazie czy gimbazie, miałem urodziny, to stary jako prezent wziął mnie ze sobą na rozmowę z chatbotem w drodze wyjątku. Super prezent kurwo.[2023-05-03T01:22:20.561Z] 438767282328436737: appendmessage&67&Wspomniałem, że ojciec ma kolegę Mirka, z którym czasem dyskutuje na temat chatGPT. Kiedyś ich towarzyszem w debatach był hehe Zbyszek. Typ o kształcie piłki z wąsem i zawsze w tej samej kamizelce. Byli bardzo bliscy, a Zbyszek nawet z żoną przychodził do nas na różne uroczystości. Jednak podczas jednej z imprez doszło do ostrej kłótni między nimi, którą spowodowała dyskusja na temat najlepszych modeli NLP.
+
+    WEŹ MNIE NIE WKURWIAJ ZBYCHU, WIDZIAŁEŚ TY KIEDYŚ JAK MODEL CHATGPT ZDAJE EGZAMIN ADWOKACKI?
+
+    KURWA TADEK, MODELE JĘZYKOWE TO JUŻ INNA ROZMOWA. PRZECIEŻ WIADOMO, ŻE NAJLEPSZE SĄ TE OD HUGGING FACE.
+
+    CO TY MI O MODELACH PIERDOLISZ JAK LEDWO REGRESJĘ LINIOWĄ POTRAFISZ ZROBIĆ. KAŻDY CHATBOT CO POJAWIA SIĘ NA RYNKU TO TYLKO PRZEDNIÓWKA, A CHATGPT TO JEST KRÓL CHATBOTÓW JAK LEW JEST KRÓL DŻUNGLI.
+
+No i aż się zaczęli kłócić, aż doszło do rękoczynów. Ja siedziałem w swoim pokoju i słuchałem, a matka musiała ich rozdzielać. Od tamtego czasu zupełnie zerwali ze sobą kontakt. W zeszłym roku dzwoniła żona Zbyszka, że Zbyszek zmarł i zaprasza nas na pogrzeb. Matka przekazała to ojcu, ale on tylko powiedział:
+
+    I BARDZO KURWA DOBRZE.
+
+Tak bardzo go za tego Hugging Face znienawidził.
+
+Wspominałem też o arcywrogu mojego starego, czyli OpenAI. Stał się on kompletną obsesją ojca i jak na przykład w telewizji mówią, że gdzieś było trzęsienie ziemi, to stary zawsze mamrocze pod nosem, że powinni w końcu coś o tych skurwysynach z OpenAI powiedzieć. Gazety nienaukowe też przestał czytać, bo miał ból dupy, że o chatGPT ani aferach w OpenAI nic się nie pisze.
+
+Szefem działu NLP w mojej okolicy jest niejaki pan Adam. Jest on dla starego uosobieniem całego zła wyrządzonego polskim tekstom przez OpenAI i ojciec przez wiele lat toczył z nim wojnę. Raz poszedł na jakieś zebranie lingwistyczne, na którym występował Adam, i stary wrócił do domu z podartym słownikiem, bo siłą go usuwali z sali, takie tam inby odpierdalał.[2023-05-03T01:22:20.561Z] 438767282328436737: appendmessage&67&Po klęsce w starciu fizycznym ze zbrojnym ramieniem OpenAI ojciec rozpoczął partyzantkę internetową, polegającą na szkalowaniu OpenAI i Adama na forach lingwistycznych gazet. Napierdalał na niego jakieś głupoty, typu że Adam był tajnym współpracownikiem UB albo że go widział na ulicy, jak komuś igłą magnetyczną wagi w modelu przestawiał itd. Nie nauczyłem ojca into TOR, więc skończyło się bagietami za szkalowanie i stary musiał zapłacić Adamowi dwa tysiące złotych.
+
+Jak płacił, to przez tydzień w domu się nie dało żyć, ojciec kurwił na przekupne sądy, OpenAI, Adama i w ogóle cały świat. Z jego pierdolenia wynikało, że OpenAI jak jacyś masoni rządzi całym internetem, pociąga za sznurki i ma wszędzie układy. Przeliczał też te dwa tysiące na chatboty, algorytmy czy modele językowe i dostawał strasznego bólu dupy, ile on by mógł na przykład szkolić swój model za te 2k (kilkaset godzin).
+
+Stary jakoś w zeszłym roku stwierdził, że koniecznie musi mieć dostęp do GPT-4, bo niby korzystanie z GPT-3 chujowo działa i wszyscy go chcą oszukać.
+
+    SYNEK, GPT-4 TO JAK ŁÓDKA W MORZU DANYCH! TAM JEST ŻYWIOŁ!
+
+Ale nie miał na to ani funduszy, ani odpowiedniego sprzętu, a hehe frajerem to on nie jest, żeby komuś płacić za dostęp, więc zgadał się z jakimiś nlp'owcami z okolicy, że kupią dostęp na spółkę, on będzie korzystał u jakiegoś Janusza, który ma szybszy internet, a nie takie badziewie jak my i będą się tą platformą dzielili albo będą korzystać razem.[2023-05-03T01:22:20.561Z] 438767282328436737: appendmessage&67&Na początku ta kooperatywa szła nawet nieźle, ale w któryś dzień ojciec musiał wyjechać służbowo i nie mógł korzystać z GPT-4, i miał o to olbrzymi ból dupy. Jeszcze ci jego koledzy dzwonili, że tam są niesamowite możliwości, więc mój ojciec tylko leżał czerwony ze złości na kanapie i sapał z wkurwienia. Sytuację jeszcze pogarszało to, że nie miał na kogo zwalić winy, co zawsze robi. W końcu doszedł do wniosku, że to niesprawiedliwe, że oni korzystają bez niego, bo przecież po równo się zrzucali na dostęp i w niedzielę wieczorem, gdy ci Janusze już korzystali z platformy, wyszedł nagle z domu.
+
+Po godzinie wraca i mówi do mnie, że muszę mu pomóc z czymś przed domem. Wychodzę na zewnątrz, a tam szafa serwerowa z dostępem do GPT-4 xD. Pytam, skąd on to wziął, a on mówi, że Januszowi zajebał z podjazdu przed domem, bo oni go oszukali, i żebym pomógł mu wnieść serwer do mieszkania xD. Na nic się zdało tłumaczenie, że zajmie cały duży pokój. Na szczęście nie zmieścił się w drzwiach do klatki, więc stary stwierdził, że on go przed domem zostawi.
+
+Za pomocą jakichś łańcuchów, co były na dostępie, i mojej kłódki od roweru przypiął go do latarni i zadowolony chce iść wracać do mieszkania, a tu nagle przyjeżdżają dwa samochody z Januszami współwłaścicielami, którzy się domyślili, gdzie ich własność może się znajdować xD. Zaczęła się nieziemska inba, bo Janusze drą mordy, dlaczego serwer ukradł i że ma oddawać, a ojciec się drze, że oni go oszukali i on 500 złotych się składał, a nie korzystał z GPT-4 w ten weekend. Ja starałem się załagodzić sytuację, żeby ojciec od nich nie dostał wpierdolu, bo było blisko.
+
+Po kilkunastu minutach sytuacja wyglądała tak:
+
+– Mój ojciec leży na ziemi, kurczowo trzyma się szafy i krzyczy, że nie odda.
+
+– Janusze krzyczą, że ma oddawać.
+
+– Jeden Janusz ma rozjebany nos, bo próbował leżącego ojca odciągnąć od serwera za nogę i dostał drugą nogą z kopa.[2023-05-03T01:22:20.561Z] 438767282328436737: appendmessage&67&– Dwóch policjantów ciągnie ojca za nogi i mówi, że jedzie z nimi na komisariat, bo pobił człowieka.
+
+– We wszystkich oknach dookoła stoją sąsiedzi.
+
+– Moja stara płacze i błaga ojca, żeby zostawił serwer, a policjantów, żeby go nie aresztowali.
+
+– Ja: smutnazaba.psd.
+
+W końcu policjanci oderwali starego od serwera. Ja podałem Januszom kod do kłódki rowerowej i zabrali serwer, rzucając wcześniej staremu 500 złotych i mówiąc, że nie ma już do GPT-4 żadnego dostępu i lepiej dla niego, żeby się nigdy na forum nie spotkali. Matka ubłagała policjantów, żeby nie aresztowali ojca. Janusz, co dostał w mordę butem, powiedział, że on się nie będzie pierdolił z łażeniem po komisariatach i ma to w dupie, tylko ojca nie chce więcej widzieć.
+
+Stary do tej pory robi z Januszami gównoburzę na forach dla entuzjastów AI, bo założyli tam specjalny temat, gdzie przestrzegali przed robieniem jakichkolwiek interesów z moim ojcem. Obserwowałem ten temat i widziałem, jak mój ojciec nieudolnie porobił trollkonta:
+
+    ChatGPTFan123
+
+    Liczba postów: 1
+
+    Ten temat założyli jacyś idioci! Znam użytkownika stary_anona od dawna i to bardzo porządny człowiek i wspaniały naukowiec danych! Chcą go oczernić bo zazdroszczą jego osiągnięć w dziedzinie NLP i sztucznej inteligencji!
+
+Potem jeszcze używał tych trollkont do prześladowania niedawnych kolegów od dostępu do GPT-4. Jak któryś z nich zakładał jakiś temat, to ojciec się tam wpierdalał na trollkoncie i na przykład pisał, że mało efektywne modele tworzy i widać, że nie umie programować xD.[2023-05-03T01:22:20.561Z] 438767282328436737: appendmessage&67&Z tych samych trollkont udzielał się w swoich tematach i jak na przykład wrzucał zdjęcia stworzonych przez siebie modeli, to sam sobie pisał
+
+    NOOOO GRATULUJĘ OSIĄGNIĘCIA! WIDAĆ, ŻE DOŚWIADCZONY PROGRAMISTA!
+
+a potem się z tego cieszył i kazał oglądać mi i starej, jak go chwalą na forum.[2023-05-08T01:15:25.312Z] 438767282328436737: https://www.reddit.com/r/alo_irl?utm_source=share&utm_medium=android_app&utm_name=androidcss&utm_term=1&utm_content=share_button[2023-05-09T19:12:14.232Z] 438767282328436737: https://cdn.discordapp.com/emojis/1096517198756974754.gif?size=48&name=SPEEEEEEEEEN&quality=lossless[2023-05-14T13:28:29.195Z] 438767282328436737: addtag&admin&438767282328436737[2023-05-14T13:30:41.276Z] 438767282328436737: addtag&admin&438767282328436737[2023-05-14T13:31:21.584Z] 438767282328436737: addtag&admin&438767282328436737[2023-05-14T13:32:00.965Z] 438767282328436737: addtag&admin&438767282328436737[2023-05-14T13:32:54.792Z] 438767282328436737: channel&1063934412053557310&amogus[2023-05-14T13:33:32.570Z] 438767282328436737: addtag&admin&438767282328436737[2023-05-14T13:34:20.639Z] 438767282328436737: addtag&admin&438767282328436737[2023-05-14T13:35:05.520Z] 438767282328436737: addtag&admin&438767282328436737[2023-05-14T13:35:52.930Z] 438767282328436737: addtag&admin&438767282328436737[2023-05-14T13:38:19.772Z] 438767282328436737: addtag&admin&438767282328436737[2023-05-14T13:38:36.218Z] 438767282328436737: addtag&admin&771709136051372032[2023-05-14T15:41:55.249Z] 438767282328436737: addtag&woman&823896940847824936[2023-05-14T15:42:53.454Z] 438767282328436737: addtag&admin&771709136051372032[2023-05-14T15:43:08.552Z] 438767282328436737: addtag&admin&438767282328436737[2023-05-14T15:44:22.182Z] 771709136051372032: addmessage&Pain Remains I: 
+Captivate me
+Become my escape
+I can't look away
+You were my everything
+If the past is just dust
+Then the future could be our dream
+If all we have is now, this eternity
+Ignite my satisfaction, engulf me
+We're dancing like flames, flickering in the night
+We sway in time with the wind before melting away
+You're far from my reach but not far out of sight
+You know the way to my heart but you just play the strings again
+Flicker like shadows dancing beyond the flame
+Captivate, hypnotized by the fire in her eyes
+You took me by surprise
+And then you disappeared in the blink of an eye
+Pull me into the pyre
+Engulf me in flames
+Captivate me, eidolon, gravity
+Magnetic, pull me toward my ecstasy
+We're dancing like flames, flickering in the night
+We sway in time with the wind before melting away
+You're far from my reach but not far out of sight
+You know the way to my heart but you just play the strings again
+Flicker like shadows dancing beyond the flames
+Enchanting, mesmerized
+Take what is left of my life
+A wrinkle in time
+Where did you go?
+A wrinkle in time
+Take what is left of my life
+Before you go, show me what it's like to finally know
+The face behind the silhouette
+In this world I made to be infinite
+But within the expanse, I finally see
+A world without you isn't meant for me
+Where do you go when I close my eyes?
+What do you see looking back at me?
+Am I just a ghost just like you?
+Caught between the seams of two intertwining melodies
+
+Pain Remains II:
+I'll disappear (I'll disappear)
+It's like the world I knew keeps passing
+Unlike the void I have become
+Picking up pieces left from another life
+This fleeting memory is everything you left behind
+I'm just a whisper, just a specter locked away in time
+This purgatory is eating away at my mind
+Left to wander, left to dissipate
+Without you I will never be the same
+Left to confide insecurity
+When you disappeared you took a part of me
+I see you over and over
+Far beyond me
+I'm drifting away
+Even inside a dream
+This world has no meaning
+And after all that I've done
+After all of my pain
+After all that I've become
+Will I disappear, disappear
+Like a ghost in the breeze?
+Like fading memories
+Like the world you left was only just a dream
+So I'll disappear, I'll disappear, I'll disappear
+It's like the world I knew keeps passing
+Unlike the void I have become
+Letting go of perfection, another lie
+This wretched melody is everything you left to die
+I'm just a vacuum, just a fragment, an echo in time
+This purgatory is eating away everything
+Left to suffer, left without your place
+Without you I will never be the same
+Let me see you one more time
+When you disappeared you took a part of me
+I see you over and over
+Far beyond me
+I'm drifting away
+Even inside a dream
+This world (this world) has no meaning
+And after all that I've done
+After all of my pain
+After all that I've become
+Will I disappear, disappear
+Like a ghost in the breeze?
+Like fading memories
+Like the world you left was only just a dream
+So I'll disappear, I'll disappear, I'll disappear
+After all that I've done
+After all of my pain
+This fucking world disintegrates (I'll disappear)
+And after all that I've done
+After all of my pain
+After all that I've become
+Will I disappear, disappear (disappear)
+Like a ghost in the breeze?
+Like fading memories
+Like the world you left was only just a dream
+So I'll disappear (disappear)
+I'll disappear, I'll disappear&pain&remains&ból&pozostaje 
+[2023-05-14T15:48:05.920Z] 771709136051372032: <@&1053683784853237843>
+[2023-05-14T15:56:54.974Z] 438767282328436737: findmessage&ai 
+[2023-05-14T15:57:02.538Z] 438767282328436737: seereactions&67
+[2023-05-14T15:59:21.913Z] 438767282328436737: seereactions&67
+[2023-05-14T15:59:37.479Z] 438767282328436737: seereactions&67
+[2023-05-14T18:04:40.691Z] 438767282328436737: addmessage&https://cdn.discordapp.com/attachments/1070250245549740032/1107357390686404839/IMG20230420155827.jpg&pussy&brys
+[2023-05-14T18:06:43.184Z] 438767282328436737: findmessage&fiona
+[2023-05-14T18:06:55.061Z] 438767282328436737: addreaction&63&lettuc&letuc
+[2023-05-14T18:07:08.104Z] 438767282328436737: addreaction&63&letuc
+[2023-05-14T19:35:50.326Z] 438767282328436737: &
+[2023-05-15T20:09:46.747Z] 438767282328436737: addtag&delikot&771709136051372032
+[2023-05-17T05:55:06.617Z] 438767282328436737: addmessage&:3&:3
+[2023-05-17T10:23:56.042Z] 438767282328436737: addtag&littlehawk&1051921245781905439
+[2023-05-17T10:24:15.044Z] 438767282328436737: addtag&littlehawk&438767282328436737
+[2023-05-17T11:02:50.946Z] 438767282328436737: findmessage&:3
+[2023-05-17T11:02:57.359Z] 438767282328436737: deletemessage&70
+[2023-05-17T11:13:37.383Z] 438767282328436737: findmessage&papiesz
+[2023-05-17T11:13:44.065Z] 438767282328436737: findmessage& papież 
+[2023-05-17T11:18:21.374Z] 438767282328436737: findmessage&papaj
+[2023-05-17T11:18:28.284Z] 438767282328436737: seereactions&38
+[2023-05-17T11:18:43.780Z] 438767282328436737: addreaction&38&papiesz
+[2023-05-17T11:18:55.011Z] 438767282328436737: addreaction&38&2137[2023-05-21T20:32:45.419Z] 438767282328436737: findmessage&amogus
+[2023-05-21T20:33:00.688Z] 438767282328436737: addreaction&55&sus
+[2023-05-21T20:35:39.904Z] 438767282328436737: addreaction&55&sus
+added to server id 1063934410581360761
+"//zak\r\n#include <bits/stdc++.h>\r\nusing namespace std;\r\n\r\nint main()\r\n{\r\n    int oR,R8;\r\n    cin>>oR>>R8;\r\n    int *ts = new int[6];\r\n    for(int a=0;a<oR;a++){\r\n        int v9;\r\n        cin>>v9;\r\n        ts[v9-1]++;\r\n    }\r\n    sort(ts,ts+6);\r\n    int Va=0;\r\n    for(int a=0;a<6;a++){\r\n        Va+=(bool)ts[a];\r\n    }\r\n    if(Va<=R8){\r\n        cout<<R8-Va;\r\n        return 0;\r\n    }\r\n    int l6=0;\r\n    for(int a=0;a<6-R8;a++){\r\n        l6+=ts[a];\r\n    }\r\n    cout<<l6;\r\n    return 0;\r\n}"
+//zak
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int Or,z;
+    cin>>Or>>z;
+    int *wiW = new int[6];
+    for(int k=0;k<Or;k++){
+        int B;
+        cin>>B;
+        wiW[B-1]++;
+    }
+    sort(wiW,wiW+6);
+    int Ve=0;
+    for(int k=0;k<6;k++){
+        Ve+=(bool)wiW[k];
+    }
+    if(Ve<=z){
+        cout<<z-Ve;
+        return 0;
+    }
+    int W=0;
+    for(
+	    int k=0;
+	    k<6-z;
+	    k++
+    ){
+        W+=wiW[k];
+    }
+    cout<<W;
+    return 0;
+}
+//zak
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int gM,bf;
+    cin>>gM>>bf;
+    int *cJ = new int[6];
+    for(int EH=0;EH<gM;EH++){
+        int km;
+        cin>>km;
+        cJ[km-1]++;
+    }
+    sort(cJ,cJ+6);
+    int xt=0;
+    for(int EH=0;EH<6;EH++){
+        xt+=(bool)cJ[EH];
+    }
+    if(xt<=bf){
+        cout<<bf-xt;
+        return 0;
+    }
+    int Ag=0;
+    for(int EH=0;EH<6-bf;EH++){
+        Ag+=cJ[EH];
+    }
+    cout<<Ag;
+    return 0;
+}
+//zak
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int ST,y;
+    cin>>ST>>y;
+    int *vZI = new int[6];
+    for(int C=0;C<ST;C++){
+        int NS;
+        cin>>NS;
+        vZI[NS-1]++;
+    }
+    sort(vZI,vZI+6);
+    int v=0;
+    for(int C=0;C<6;C++){
+        v+=(bool)vZI[C];
+    }
+    if(v<=y){
+        cout<<y-v;
+        return 0;
+    }
+    int o=0;
+    for(
+	    int C=0;
+	    C<6-y;
+	    C++
+    ){
+        o+=vZI[C];
+    }
+    cout<<o;
+    return 0;
+}
+//zak
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int yNA,tV;
+    cin>>yNA>>tV;
+    int *f = new int[6];
+    for(
+	    int u=0;
+	    u<yNA;
+	    u++
+    ){
+        int TV;
+        cin>>TV;
+        f[TV-1]++;
+    }
+    sort(f,f+6);
+    int oQ=0;
+    for(int u=0;u<6;u++){
+        oQ+=(bool)f[u];
+    }
+    if(oQ<=tV){
+        cout<<tV-oQ;
+        return 0;
+    }
+    int Y=0;
+    for(int u=0;u<6-tV;u++){
+        Y+=f[u];
+    }
+    cout<<Y;
+    return 0;
+}
+//zak
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int Eb,kjE;
+    cin>>Eb>>kjE;
+    int *R2 = new int[6];
+    for(int tF=0;tF<Eb;tF++){
+        int BR;
+        cin>>BR;
+        R2[BR-1]++;
+    }
+    sort(R2,R2+6);
+    int b=0;
+    for(int tF=0;tF<6;tF++){
+        b+=(bool)R2[tF];
+    }
+    if(b<=kjE){
+        cout<<kjE-b;
+        return 0;
+    }
+    int ld=0;
+    for(int tF=0;tF<6-kjE;tF++){
+        ld+=R2[tF];
+    }
+    cout<<ld;
+    return 0;
+}
+//zak
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int L0Q,pY;
+    cin>>L0Q>>pY;
+    int *WP = new int[6];
+    for(int Bad=0;Bad<L0Q;Bad++){
+        int shU;
+        cin>>shU;
+        WP[shU-1]++;
+    }
+    sort(WP,WP+6);
+    int D=0;
+    for(
+	    int Bad=0;
+	    Bad<6;
+	    Bad++
+    ){
+        D+=(bool)WP[Bad];
+    }
+    if(D<=pY){
+        cout<<pY-D;
+        return 0;
+    }
+    int H=0;
+    for(int Bad=0;Bad<6-pY;Bad++){
+        H+=WP[Bad];
+    }
+    cout<<H;
+    return 0;
+}
+cco to robi
+ok
+O
+zajeb się <@438767282328436737>
+SMIESVE
+XDDDD
+jak to usunacmam pytanie
+bo wiadomosci koxpl sa usuniete chyba
+hitler chciał dobrze dla polskich dzieci
+dobra kurwa skończcie tą gównoburzę
+chciałem ddosować ale się rozmyśliłem bo maszynki drogie
+właśnie
+więc niech się pogodzi z tym że nie będę go nazywał kobiętą póki mu tego nie zmienią w papierach
+i naprawcie mi role
+poprostu
+co ty robisz gaweł
+w sensie jakies &addtag
+co sprawdź
+w
+kruwa
+a weź spierdalaj
+<@771709136051372032>
+oddawaj awans ❤️
+szymon oddaj role
+<@438767282328436737> czemu wyszedłeś
+za co dostał tego bana
+chyba za nsfw
+i propagowanie do nienawiści
+i dobrze
+mogło zestresować
+ale płakuś
+goofy ahh
+Samsung ringtone
+,>,[-<+>]<.
+,>,[-<+>]<.
+,>,[-<+>]<.
+nie interesują mnie twoje zajęcia
+nie interesują mnie twoje zajęcia
+jak?
+?
+za co?
+ja naprzykład jestem
+za tym żeby wyjebać tego bota
+added to server id 1015624474973982802
+co ten kerfuś sie tak pojawia i znika
+added to server id 1120214678891667586
+added to server id 1121125014096318615
++++>++<[->+<]>.
+>++++++++[<+++++++++>-]<.>++++[<+++++++>-]<+.+++++++..+++.>>++++++[<+++++++>-]<+ +.------------.>++++++[<+++++++++>-]<+.<.+++.------.--------.>>>++++[<++++++++>- ]<+.
++++++++++++++++++++++++++++++++++>+++++++++++++++++++++++++++++++++[<.>-]<+++.
++++++++++++++++++++++++++++++++++++++++++++>+++++++++++++++++++++++++++++++++++++++++++[<.>-]<+++.
++++++++++++++++++++++++++++++++++++++++++++.
+,>++++++[<-------->-],[.<->]
+,>++++++[<-------->-],<[>.<-]
+,>++++++[<-------->-],<[>.<-
+,>++++++[<-------->-],<[>.<-]
+,>++++++[<-------->-],<[>.<-]
+,>++++++[<-------->-],<[>.<-]
+,<,[>.<-]
+,<,[>.<-]
+,<,[>.<-]
+```[root@win 10 ~]# cat delete.js 1 page 1 of 1.  exports.run = (msg,client) => {   msg.formatted = client.misc.polishchars(` ${msg.content} `).toLowerCase().replace(/["'\*\.]/g,"");   if(!msg.formatted.includes('krzys'))return;   client.misc.log(msg.content);   let out = 'stop';   msg.delete().catch(e=>{});   return out; }```
+```[root@win 10 ~]# cat delete.js 1 page 1 of 1.  exports.run = (msg,client) => {   msg.formatted = client.misc.polishchars(` ${msg.content} `).toLowerCase().replace(/["'\*\.]/g,"");   if(!msg.formatted.includes('krzys'))return;   client.misc.log(msg.content);   let out = 'stop';   msg.delete().catch(e=>{});   return out; }```
+```[root@win 10 ~]# cat delete.js 1 page 1 of 1.  exports.run = (msg,client) => {   msg.formatted = client.misc.polishchars(` ${msg.content} `).toLowerCase().replace(/["'\*\.]/g,"");   if(!msg.formatted.includes('krzys'))return;   client.misc.log(msg.content);   let out = 'stop';   msg.delete().catch(e=>{});   return out; }```
+```[root@win 10 ~]# cat delete.js 1 page 1 of 1.  exports.run = (msg,client) => {   msg.formatted = client.misc.polishchars(` ${msg.content} `).toLowerCase().replace(/["'\*\.]/g,"");   if(!msg.formatted.includes('krzys'))return;   client.misc.log(msg.content);   let out = 'stop';   msg.delete().catch(e=>{});   return out; }```
+```[root@win 10 ~]# cat delete.js 1 page 1 of 1.  exports.run = (msg,client) => {   msg.formatted = client.misc.polishchars(` ${msg.content} `).toLowerCase().replace(/["'\*\.]/g,"");   if(!msg.formatted.includes('krzys'))return;   client.misc.log(msg.content);   let out = 'stop';   msg.delete().catch(e=>{});   return out; }```
+if message has krzys
+krzys
+krzys
+so krzys is deleted ?
+added to server id 1129956864470306846

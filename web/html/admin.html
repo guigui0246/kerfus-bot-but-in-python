@@ -1,0 +1,100 @@
+TITLE##
+Kerfuś - Admin
+##STYLE##
+##BODY##
+<p id="popup"></p>
+
+<form id="commandform" action="runcommand" target="_self" autocomplete="off" method="post">
+  <label for="comm">Command:           </label>
+  <input type="text" id="comm" name="comm" autocomplete="on"><br>
+  <label for="arg1">Argument1:         </label>
+  <input type="text" id="arg1" name="arg1"><br>
+  <label for="arg2">Argument2:         </label>
+  <input type="text" id="arg2" name="arg2"><br>
+  <label for="arg3">Argument3:         </label>
+  <input type="text" id="arg3" name="arg3"><br>
+  <input type="submit" value="Run Command">
+</form>
+<br><br>
+<h1>Documentation</h1>
+<table>
+  <colgroup>
+      <col style="background-color:#E3AABD;" span="3"/>
+    </colgroup>
+  <tr>
+    <th>command</th>
+    <th>explanation</th>
+    <th>example</th>
+  </tr>
+  <tr>
+    <td>test</td>
+    <td>prints arg1 to the console</td>
+    <td>test&this is a test</td>
+  </tr>
+  <tr>
+    <td>addtag</td>
+    <td>adds the the tag arg1 to user arg2</td>
+    <td>addtag&delicat&771709136051372032</td>
+  </tr>
+  <tr>
+    <td>channel</td>
+    <td>sends message arg2 to channel arg1</td>
+    <td>channel&1015624476429398067&amogus</td>
+  </tr>
+  <tr>
+    <td>flash</td>
+    <td>sends message arg3 to channel arg1,<br>delestes after arg2 milliseconds</td>
+    <td>flash&1015624476429398067&1000&fast sus</td>
+  </tr>
+  <tr>
+    <td>addmessage</td>
+    <td>adds a copypasta arg1, witch keywords arg2-....</td>
+    <td>addmessage&very sus&amogus&sussy baka</td>
+  </tr>
+  <tr>
+    <td>findmessage</td>
+    <td>finds message with the keyword arg1,<br>returns the id and the start of the message</td>
+    <td>findmessage&pussy</td>
+  </tr>
+  <tr>
+    <td>addreaction</td>
+    <td>adds a keyword arg2 to copypasta wih id arg1</td>
+    <td>addreaction&55&sussy baka</td>
+  </tr>
+  <tr>
+    <td>seereactions</td>
+    <td>gives out the keywords of copypasta<br>with id arg1, separated by '&'</td>
+    <td>seereactions&55 (output: amogus&sussy baka)</td>
+  </tr>
+  <tr>
+    <td>changemessage</td>
+    <td>changes the text of a copypasta with id arg1<br>to arg2, useful for fixing typos</td>
+    <td>changemessage&55&very sus</td>
+  </tr>
+  <tr>
+    <td>appendmessage</td>
+    <td>appends the text of a copypasta with id arg1<br>with arg2, for length limits on discord</td>
+    <td>appendmessage&55&very sus</td>
+  </tr>
+  <tr>
+    <td>deletemessage</td>
+    <td>delestes a copypasta<br>THIS CANNOT BE UNDONE!</td>
+    <td>deletemessage&55</td>
+  </tr>
+  <tr>
+    <td>readsuggestions</td>
+    <td>read suggestions</td>
+    <td>readsuggestions</td>
+  </tr>
+  <tr>
+    <td>removesuggestion</td>
+    <td>remove suggestion by id</td>
+    <td>removesuggestion&3</td>
+  </tr>
+  <tr>
+    <td>createcode</td>
+    <td>creates a code to log in, arg1 = uses#, args2 = user tags</td>
+    <td>createcode&2&{"admin":true}</td>
+  </tr>
+</table>
+##SCRIPT##
