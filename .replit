@@ -88,3 +88,6 @@ start = "typescript-language-server --stdio"
 [auth]
 pageEnabled = false
 buttonEnabled = false
+
+[deployment]
+run = ["sh", "-c", "node index.js"]
