@@ -151,15 +151,12 @@ function execute(text,quotes,newargs="",newquotes=""){
     let dir = file.split('/').slice(0,-1).join('/');
     if(!fs.existsSync(dir))
       return "not found error: directory doesnt exist";
-    fs.closeSync(fs.openSync(file, 'w'));
-    console.log(append,text_)
-    if(append){
-      text_ = fs.readFileSync(file.trim()) + text_;
-      console.log(fs.readFileSync(file.trim()),text_);
-      console.log("."+file.trim()+".")
-      fs.writeFileSync(file,text_);
+    file = file.trim()
+
+    if(append) {
+      fs.appendFileSync(file,text_, 'utf8'); 
     }else
-      fs.writeFileSync(file,text_);
+      fs.writeFileSync(file,text_, 'utf8');
     return "";
   }
   ind=index(text.split(""),(e,i)=>{return e=="|"&&quotes[i]=="0"});
