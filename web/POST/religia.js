@@ -7,7 +7,7 @@ exports.run = (client,res,req,data) => {
   a.push(req.body.rel);
   a = JSON.stringify(a);
   a = CryptoJS.AES.encrypt(a, process.env['ENCRYPTION']).toString();
-  client.webdb.set('religia',a);
+  client.webdb.v2set('religia',a);
   data['send'] = 'religia';
   data['popup'] = 'zapisano zgłoszenie.'
   data["popup type"] = "text";

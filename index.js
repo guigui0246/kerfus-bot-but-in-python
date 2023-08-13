@@ -29,7 +29,7 @@ expr()
   .use(require('cors')({origin:'*'}))
   .use(require('cookie-parser')())
   .use(expr.json())
-  .use(require('./web/login.js')())
+  .use(require('./web/login.js')(client))
   .all(/.*/,(req,res)=>{
     let data = {
       "starttime":starttime,

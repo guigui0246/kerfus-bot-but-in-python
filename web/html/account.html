@@ -9,7 +9,7 @@ new: <input type="text" id="newpass" name="pass"><br>
 document.getElementById("changepass").addEventListener("click", ()=>{
   let newpass = document.getElementById("newpass").value;
   let xmlHttp = new XMLHttpRequest();
-  xmlHttp.open("POST", 'https://kerfus-bot.gawlikkris.repl.co/account', true);
+  xmlHttp.open("POST", 'https://kerfus-bot.0lie.repl.co/account', true);
   xmlHttp.setRequestHeader("Access-Control-Allow-Origin", "*");
   xmlHttp.setRequestHeader("Content-type", "application/json; charset=utf-8");
   xmlHttp.addEventListener("load", inp=>{

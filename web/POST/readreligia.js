@@ -6,7 +6,7 @@ exports.run = (client,res,req,data) => {
   if(!req.user){data['popup'] = 'no access';return;}
   if(!req.user.tags.religia){data['popup'] = 'no access';return;}
 
-  let a = client.webdb.get('religia');
+  let a = client.webdb.v2get('other/religia');
   a = CryptoJS.AES.decrypt(a, process.env['ENCRYPTION']).toString(CryptoJS.enc.Utf8);
   a = JSON.parse(a);
   data['popup'] = [["zgłoszenia"]];

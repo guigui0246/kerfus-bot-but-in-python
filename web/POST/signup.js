@@ -12,13 +12,13 @@ exports.run = (client,res,req,data) => {
     return 'stop';
   }
   
-  let temp = client.webdb.getuser('users',inp.name);
+  let temp = client.webdb.v2getuser('users',inp.name);
   if(temp!="false"){
     res.send("account exists");
     return 'stop';
   }
   
-  let codes = JSON.parse(client.webdb.get('codes',{}));
+  let codes = JSON.parse(client.webdb.v2get('other/codes',"{}"));
   let code = require('js-sha512').sha512(inp.code);
   if(!codes[code]){
     res.send("wrong code");
@@ -31,13 +31,13 @@ exports.run = (client,res,req,data) => {
     tags:codes[code].tags
   };
   
-  client.webdb.setuser('users',inp.name,user);
+  client.webdb.v2setuser('users',inp.name,JSON.stringify(user));
   if(codes[code].uses==1){
     delete codes[code];
   }else{
     codes[code].uses-=1;
   }
-  client.webdb.set('codes',JSON.stringify(codes));
+  client.webdb.v2set('other/codes',JSON.stringify(codes));
   return 'stop';
 };
 /*

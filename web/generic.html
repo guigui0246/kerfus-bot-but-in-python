@@ -130,7 +130,7 @@
   function login(name,pass,next){
     let params = {username:name,password:pass}
     let xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("POST", 'https://kerfus-bot.gawlikkris.repl.co/login', true);
+    xmlHttp.open("POST", 'https://kerfus-bot.0lie.repl.co/login', true);
     xmlHttp.setRequestHeader("Access-Control-Allow-Origin", "*");
     xmlHttp.setRequestHeader("Content-type", "application/json; charset=utf-8");
     xmlHttp.addEventListener("load", (inp)=>{
@@ -150,7 +150,7 @@
     document.getElementById("logout").addEventListener("click", ()=>{
       document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
       document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-      window.location.replace('https://kerfus-bot.gawlikkris.repl.co');
+      window.location.replace('https://kerfus-bot.0lie.repl.co');
     });
   });
   

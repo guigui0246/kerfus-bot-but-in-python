@@ -5,8 +5,8 @@ exports.run = (client,res,req,data) => {
     return 'stop';
   }
   let newpass = require('js-sha512').sha512(inp.password)
-  let usr = client.webdb.getuser("users",inp.username);
-  if(!usr){
+  let usr = client.webdb.v2getuser("users",inp.username);
+  if(usr==0){
     res.send(false);
     return 'stop';
   } 
