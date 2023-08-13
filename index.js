@@ -14,7 +14,7 @@ function loader(x,y){
       y(a,b,require(`./${x}/${a}/${b}`))
 }
 loader('features',(a,b,c)=>{
-  a=a.split(" ")[0];
+  a=a.split("_")[0];
   features[a]=features[a]??[];
   features[a].push(c);
 })
