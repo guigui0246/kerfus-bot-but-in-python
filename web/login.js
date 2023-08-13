@@ -34,7 +34,7 @@ function getpermissions(username){
 function use(req,res,next){
   if(!req.cookies.password||!req.cookies.username){next();return;}
   let newpass = require('js-sha512').sha512(req.cookies.password);
-  let usr = client.webdb.getuser("users",req.cookies.username)
+  let usr = client.webdb.v2getuser("users",req.cookies.username)
   if(!usr){next();return;}
   usr=JSON.parse(usr);
   if(newpass != usr.password){next();return;}
