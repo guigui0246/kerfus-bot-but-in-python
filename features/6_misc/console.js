@@ -76,6 +76,7 @@ const commands = {
     var temp = args.join(" ");
     temp = temp.replace("~","/home/runner/kerfus-bot")
     temp = (temp[0]=="/"?temp:(data.dir+temp));
+    temp = temp.trim();
     if (!fs.existsSync(temp))
       return `file not found`;
     try{
@@ -159,10 +160,12 @@ function execute(text,quotes,newargs="",newquotes=""){
       fs.writeFileSync(file,text_, 'utf8');
     return "";
   }
-  ind=index(text.split(""),(e,i)=>{return e=="|"&&quotes[i]=="0"});
+  ind=index(text.split(""),(e,i)=>{return (e=="|"||e==";")&&quotes[i]=="0"});
   if(ind!=-1){
     let newargs = execute(text.slice(0,ind),quotes.slice(0,ind));
-    let [nform,nq]=findquotes(newargs);
+    let nform ="",nq =""
+    if(text.split("")[ind]=="|")
+      [nform,nq]=findquotes(newargs);
     return execute(text.slice(ind+1),quotes.slice(ind+1),nform,nq);
   }
   //actual commands here
