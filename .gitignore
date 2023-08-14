@@ -1,0 +1,9 @@
+node_modules
+personal
+database
+web/database
+.breakpoints
+.replit
+replit.nix
+package.json
+package-lock.json

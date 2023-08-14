@@ -209,6 +209,6 @@ client.db.v2setuser(`console`,msg.author.id,JSON.stringify(data));
 let pages = client.misc.sliceby(out,1500);
 if(pages.length==0)msg.channel.send("```"+reply+'```')
 pages.forEach(e=>{
-  msg.channel.send("```"+reply.replace('\\','\\\\').replace('```','\\```')+e.replace('\\','\\\\').replace('```','\\```')+'```')
+  msg.channel.send("```"+reply.replace('```','``\\`')+e.replace('```','``\\`')+'```')
 })
 }

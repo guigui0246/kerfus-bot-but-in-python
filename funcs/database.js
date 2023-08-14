@@ -6,7 +6,7 @@ class database {
     this.dirname = name;
   }
 
-  //v1
+  //v1 - depracted, dont use
   getuser(type, id, def = false) {
     let dir = `${this.dirname}/${type}`;
     let path = `${dir}/${id}`;
@@ -140,6 +140,7 @@ class database {
     }
     return require(path);
   }
+  
   v2getuser(type, id, def = false) {
     let data = this.v2_loaduser(type, id);
     if (type in data)
