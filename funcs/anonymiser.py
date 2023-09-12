@@ -21,7 +21,8 @@ def word_at(word:str,at:SupportsIndex) -> tuple[str, SupportsIndex, SupportsInde
 
 def find_vars(code:str) -> list[str]:
     vars = code
-    keywords = open('data/keywords.txt', encoding="utf-8").readlines()
+    with open('data/keywords.txt', encoding="utf-8") as file:
+        keywords = file.readlines()
     keywords = [e.removesuffix("\n").strip() for e in keywords]
     vars = vars.split('\n')
     vars = [i for i in vars if re.compile("/^#/").search(i) == None]
