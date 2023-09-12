@@ -1,8 +1,12 @@
+from typing import Any
+from typing import SupportsIndex
 import json
 import time
 import asyncio
+import re
 
-def setup (a):
+def setup (a) -> dict[str, Any]:
+    global client
     client = a
     n = 1*client.db.nget('other/remindercount')
     reminders = []
@@ -24,88 +28,85 @@ def setup (a):
     loop.run_forever()
     return globals()
 
-
-
 def test():
     return
 
-"""
-exports.addhtmls = (data,document) => {
-    let gen = ""+fs.readFileSync("web/generic.html");
-    let doc = (""+document).split('##');
-    let out = gen.replace("#DATA#",JSON.stringify(data));
-    for( let x = 0;x<doc.length;x+=2)
-        out = out.replace(`#${doc[x]}#`,doc[x+1])
-    return out;
-}
+def addhtmls(data, document) -> str:
+    with open("web/generic.html") as file:
+        gen = file.read()
+    doc = str(document).split("##")
+    out = gen.replace("#DATA#",json.dumps(data))
+    for x in range(0, len(doc), 2):
+        out = out.replace(f"#{doc[x]}#", doc[x+1])
+    return out
 
-exports.hastag = (tag,id) => {
-    let tagged= JSON.parse(fs.readFileSync("data/tags.json", 'utf-8'));
-    if(!(tag in tagged))return false;
-    return tagged[tag].includes(id);
-}
+def hashtag (tag:SupportsIndex, id) -> bool:
+    with open("data/tags.json", encoding="utf-8") as file:
+        tagged:list[list] = json.load(file)
+    if not tag in tagged:
+        return False
+    return id in tagged[tag]
 
-exports.addtag = (tag,id) => {
-    let tagged = JSON.parse(fs.readFileSync("data/tags.json", 'utf-8'));
-    if(tag in tagged){
-        if(!(tagged[tag].includes(id)))tagged[tag].push(id);
-    }
-    else
-        tagged[tag] = [id];
-    fs.writeFileSync("data/tags.json", JSON.stringify(tagged));
-}
+def addtag(tag:SupportsIndex, id):
+    with open("data/tags.json", encoding="utf-8") as file:
+        tagged:list[list] = json.load(file)
+    if tag in tagged:
+        if not id in tagged[tag]:
+            tagged[tag].append(id)
+    else:
+        tagged[tag] = [id]
+    with open("data/tags.json", "w", encoding="utf-8") as file:
+        json.dump(tagged, file)
 
-exports.removetag = (tag,id) => {
-    let tagged = JSON.parse(fs.readFileSync("data/tags.json", 'utf-8'));
-    if(tag in tagged)
-        if(tagged[tag].includes(id)){
-            tagged[tag].splice(tagged[tag].indexOf(id),1);
-            fs.writeFileSync("data/tags.json", JSON.stringify(tagged));
-        }
-}
+def removetag(tag:SupportsIndex, id):
+    with open("data/tags.json", encoding="utf-8") as file:
+        tagged:list[list] = json.load(file)
+    if tag in tagged:
+        if id in tagged[tag]:
+            tagged[tag].remove(id)
+            with open("data/tags.json", "w", encoding="utf-8") as file:
+                json.dump(tagged, file)
 
-exports.log = (text , file = 'logs.txt') => {
-    fs.appendFileSync(file, text.replace(/\n/g,' ')+"\n");
-}
+def log(text:str, filepath:str="logs.txt"):
+    with open(filepath, "a") as file:
+        file.write(text.replace("\n", " ") + "\n")
 
-exports.polishchars = (text) => {
-    let copy = text;
-    let polish = "ęóąśłżźćń";
-    let fixed = "eoaslzzcn";
-    for(let i in fixed)
-        copy = copy.replaceAll(polish[i], fixed[i])
-    return copy;
-}
+def polishchars(text:str) -> str:
+    copy = text
+    polish = "ęóąśłżźćń"
+    fixed = "eoaslzzcn"
+    for i in range(len(fixed)):
+        copy = copy.replace(polish[i], fixed[i])
+    return copy
 
-exports.sliceby = (text,spacing) => {
-    out = [];
-    for(var i = 0;i<text.length;i+=spacing){
-        out.push(text.slice(i,i+spacing));
-    }
-    return out;
-}
+def sliceby (text:str, spacing:SupportsIndex) -> list:
+    out = []
+    for i in range(0, len(text), spacing):
+        out.append(text[i:i+spacing])
+    return out
 
-function replace4html(inp){
-    let text = inp;
-    if(typeof text=='string'||typeof text=='number'){
-        text = text.replaceAll('<','&lt;')
-        text = text.replaceAll('>','&gt;')
-        text = text.replaceAll(/\r?\n\r?/g,'<br>') 
-    }
-    else
-        text.forEach((e,i)=>text[i]=replace4html(e));
-    return text;
-}
+def replace4html(inp):
+    text = inp
+    if isinstance(text, (str, int, float)):
+        text = str(text)
+        text.replace("<", "&lt;")
+        text.replace(">", "&gt;")
+        text = re.compile("\r?\n\r?").sub("<br>", text)
+    else:
+        for i in range(len(text)):
+            text[i] = replace4html(text[i])
+    return text
 
-exports.replace4html = replace4html;
-
-exports.remind = (time, user, message)=>{
-    let numb = 1*client.db.nget('other/remindercount',0);
-    client.db.nset('other/remindercount',`${numb+1}`);
-    let timeend = time*1000+1*new Date();
-    client.db.nset(`reminder/${numb}`,JSON.stringify([user.id,timeend,message]))
-    setTimeout(()=>{
-        user.send(message).catch(err=>{});
-        client.db.ndel(`reminder/${numb}`)
-    },time*1000);
-}"""
+async def remind(timer, user, message:str):
+    numb = int(await client.db.nget('other/remindercount', 0))
+    await client.db.nset('other/remindercount', str(numb + 1))
+    timeend = timer * 1000 + int(time.time() * 1000)
+    await client.db.nset(f'reminder/{numb}', json.dumps([user.id, timeend, message]))
+    async def send_reminder():
+        await asyncio.sleep(timer)
+        try:
+            await user.send(message)
+        except:
+            pass
+        await client.db.ndel(f'reminder/{numb}')
+    asyncio.create_task(send_reminder())
