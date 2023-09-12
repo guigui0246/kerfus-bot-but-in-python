@@ -1,3 +1,5 @@
+from sys import stderr
+
 import re
 from typing import SupportsIndex
 LETTER_DIGIT_UNDERSCORE_PATTERN = re.compile("[a-zA-Z0-9_]")
@@ -46,9 +48,8 @@ def find_vars(code:str) -> list[str]:
             vars.pop(x)
     return [x for x in vars if not x == ""]
 
-def rand_name(seed) ->str:
+def rand_name() ->str:
     import random
-    random.seed(random.random() + seed)
     x = random.randint(0, 2)
     name = ALPHABET[random.randint(0, len(ALPHABET)-1)]
     abc = ALPHABET + "0123456789"
@@ -66,16 +67,15 @@ def anon(code:str) -> str:
 
     # generating new var names
     vars = find_vars(org)
-    newnames = []
-    x = 0
-    while x < len(vars):
-        temp = rand_name(x)
-        if not temp in newnames:
-            newnames += temp
-            x += 1
+    newnames = list()
+    while len(newnames) < len(vars):
+        temp = rand_name()
+        if temp not in vars and temp not in newnames:
+            newnames.append(temp)
 
     # replacing variables with new names
-    for x in range(len(code)):
+    x = 0
+    while x < len(code):
         wa = word_at(code, x)
         if not wa == None:
             try:
@@ -84,6 +84,8 @@ def anon(code:str) -> str:
                 pass
             else:
                 code = code[:wa[1]] + newnames[index] + code[wa[2]:]
+                x += len(newnames[index])
+        x += 1
 
     # splitting fors into multiple lines
     import random
