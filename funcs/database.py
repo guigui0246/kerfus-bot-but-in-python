@@ -143,6 +143,7 @@ class Database():
         return self
 
     def ndel(self, id):
+        """New delete"""
         path = os.path.join(self.dirname, str(id))
         if os.path.exists(path):
             try:
@@ -155,6 +156,7 @@ class Database():
         return self
 
     def v2_loaduser(self, type, id):
+        """v2 load user"""
         dir = os.path.join(self.dirname, "users/")
         path = os.path.join(dir, f"{id}.json")
         if not os.path.exists(dir):
@@ -186,6 +188,7 @@ class Database():
         return module[module]
 
     def v2getuser(self, type, id, defi:Any = False):
+        """v2 get user"""
         data = self.v2_loaduser(type, id)
         if type is data:
             return data[type]
@@ -198,6 +201,7 @@ class Database():
         return None
 
     def v2setuser(self, type, id, setto):
+        """v2 set user"""
         data = self.v2_loaduser(type, id)
         data[type] = setto
         path = os.path.join(self.dirname, "users", f"{id}.json")
@@ -206,6 +210,7 @@ class Database():
         return self
 
     def v2deluser(self, type, id):
+        """v2 del user"""
         data = self.v2_loaduser(type, id)
         if type in data:
             del data[type]
