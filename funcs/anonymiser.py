@@ -58,8 +58,8 @@ def rand_name() ->str:
         name += ALPHABET[random.randint(0, len(ALPHABET)-1)]
     return name
 
-#This makes the code unreadable (anonymize function)
 def anon(code:str) -> str:
+    "This makes the code unreadable (anonymize function)"
     temp = code.split('\n')
     org = ""
     # removing comments
@@ -104,6 +104,6 @@ def anon(code:str) -> str:
 
     return code
 
-#I don't know what that is but Olie exported it
 def test ():
+    "I don't know what that is but Olie exported it"
     return

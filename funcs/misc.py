@@ -6,6 +6,7 @@ import asyncio
 import re
 
 def setup (a) -> dict[str, Any]:
+    "Setup of a client"
     global client
     client = a
     n = 1*client.db.nget('other/remindercount')
@@ -29,9 +30,11 @@ def setup (a) -> dict[str, Any]:
     return globals()
 
 def test():
+    "I still don't know why 0lie put that"
     return
 
 def addhtmls(data, document) -> str:
+    "Add data to a html"
     with open("web/generic.html") as file:
         gen = file.read()
     doc = str(document).split("##")
@@ -40,14 +43,16 @@ def addhtmls(data, document) -> str:
         out = out.replace(f"#{doc[x]}#", doc[x+1])
     return out
 
-def hashtag (tag:SupportsIndex, id) -> bool:
+def hashtag (tag:SupportsIndex, id:SupportsIndex) -> bool:
+    "Look is an id as a tag"
     with open("data/tags.json", encoding="utf-8") as file:
         tagged:list[list] = json.load(file)
     if not tag in tagged:
         return False
     return id in tagged[tag]
 
-def addtag(tag:SupportsIndex, id):
+def addtag(tag:SupportsIndex, id:SupportsIndex):
+    "Add a tag to an id"
     with open("data/tags.json", encoding="utf-8") as file:
         tagged:list[list] = json.load(file)
     if tag in tagged:
@@ -58,7 +63,8 @@ def addtag(tag:SupportsIndex, id):
     with open("data/tags.json", "w", encoding="utf-8") as file:
         json.dump(tagged, file)
 
-def removetag(tag:SupportsIndex, id):
+def removetag(tag:SupportsIndex, id:SupportsIndex):
+    "Remove a tag from an id"
     with open("data/tags.json", encoding="utf-8") as file:
         tagged:list[list] = json.load(file)
     if tag in tagged:
@@ -68,10 +74,14 @@ def removetag(tag:SupportsIndex, id):
                 json.dump(tagged, file)
 
 def log(text:str, filepath:str="logs.txt"):
+    "log a text to a file"
     with open(filepath, "a") as file:
         file.write(text.replace("\n", " ") + "\n")
 
 def polishchars(text:str) -> str:
+    """Change strange char to other char\n
+    Only affects : ęóąśłżźćń
+    not ç or á because 0lie decided that"""
     copy = text
     polish = "ęóąśłżźćń"
     fixed = "eoaslzzcn"
@@ -80,12 +90,14 @@ def polishchars(text:str) -> str:
     return copy
 
 def sliceby (text:str, spacing:SupportsIndex) -> list:
+    "Cut a string using a specific spacing"
     out = []
     for i in range(0, len(text), spacing):
         out.append(text[i:i+spacing])
     return out
 
 def replace4html(inp):
+    "Replace char for a string to be addapted to html"
     text = inp
     if isinstance(text, (str, int, float)):
         text = str(text)
@@ -98,6 +110,7 @@ def replace4html(inp):
     return text
 
 async def remind(timer, user, message:str):
+    "Make a reminder after a certain time for a specific client"
     numb = int(await client.db.nget('other/remindercount', 0))
     await client.db.nset('other/remindercount', str(numb + 1))
     timeend = timer * 1000 + int(time.time() * 1000)

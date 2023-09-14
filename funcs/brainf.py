@@ -9,11 +9,13 @@ class Instance(dict):
         self.output:str=output
 
 def create(sett:list = [0, 0, 0]) -> Instance:
+    "the way to create a brainfuck instance"
     return Instance(sett)
 
 createinstance = create
 
 def runframe(instance:Instance, commands:list[str], input:list[str]) -> bool:
+    "the way to run a brainfuck instance"
     switch = {}
     def case():
         instance.data[instance.pointer] += 1
@@ -71,6 +73,7 @@ def runframe(instance:Instance, commands:list[str], input:list[str]) -> bool:
     return instance.command < len(commands)
 
 def wholesim(settings, runtime, input, code) -> str:
+    "Simulate a brainfuck program"
     instance:Instance = create(settings)
     cont = True
     x = 0

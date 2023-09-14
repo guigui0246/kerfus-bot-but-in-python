@@ -1,8 +1,10 @@
 class Seed():
+    "This is the randomizer 0lie made because she can't use a random library lol"
     def __init__(self, seed:str) -> None:
         self.seeder = self.xmur3(seed)
 
     def random(this, min:int|float = 0, max:int|float = 1) ->int|float:
+        "Random number between min and max"
         if (min > max):
             raise ValueError("The minimum value must be below the maximum value")
         if (min == max):
@@ -10,12 +12,14 @@ class Seed():
         return this.denormalize(this.sfc32(), min, max)
 
     def randomInt(this, min:int = 0, max:int = 1) ->int:
+        "Random integer (round a random number ? what the heck ?)"
         return round(this.random(min, max))
 
     def denormalize(this, value:int|float, min:int|float, max:int|float) -> int|float:
         return value * (max - min) + min
 
     def xmur3(this, string:str) -> function:
+        "Probably the RNG to make the RGN function"
         h = 1779033703 ^ len(string)
         for i in string:
             h = (((h ^ ord(i) & 0xFFFFFFFF) * 3432918353) & 0xFFFFFFFF)
@@ -27,6 +31,7 @@ class Seed():
         return randomizer
 
     def sfc32(this) -> int|float:
+        "Problaby the RNG function"
         a = this.seeder()
         b = this.seeder()
         c = this.seeder()
