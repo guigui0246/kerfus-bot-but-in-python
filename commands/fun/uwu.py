@@ -1,39 +1,34 @@
+import discord
+import re
+from ...funcs import seed
+from ...funcs import misc
 
+settings = {"actions": 0.025, "faces": 0.05, "stutters": 0.2}
+settings["faces"] += settings["actions"]
+settings["stutters"] += settings["faces"]
 
-
-"""const { SlashCommandBuilder } = require('discord.js');
-const Seed = require("/home/runner/kerfus-bot/funcs/seed.js");
-
-let settings = {
-  actions: 0.025,
-  faces: 0.05,
-  stutters: 0.2
-};
-settings.faces += settings.actions;
-settings.stutters += settings.faces;
-
-function uwuify(inp) {
-  const patterns = [
-    ["[rlv]", "w"],
-    ["th", "f"],
-    ["owe", "uv"],
-    [":(\\]|\\))", ":3"],
-    ["m+e+o+w+", "nyaa~~"],
-    ["n([aeiou])", "Ny$1"]
-  ];
-  const faces = [
-    "(・\\`ω\\´・)",
-    ";;w;;",
-    "OwO",
-    "UwU",
-    ">w<",
-    "^w^",
-    "ÚwÚ",
-    "^-^",
-    ":3",
-    "x3"
-  ];
-  const actions = [
+def uwuify(inp):
+    patterns = [
+        ["[rlv]", "w"],
+        ["th", "f"],
+        ["owe", "uv"],
+        [":(\\]|\\))", ":3"],
+        ["m+e+o+w", "nyaa~~"],
+        ["n([aeiou])", "Ny$1"]
+    ]
+    faces = [
+        "(・\\`ω\\´・)",
+        ";;w;;",
+        "OwO",
+        "UwU",
+        ">w<",
+        "^w^",
+        "ÚwÚ",
+        "^-^",
+        ":3",
+        "x3"
+    ]
+    actions = [
     "*blushes*",
     "*whispers to self*",
     "*cries*",
@@ -49,59 +44,44 @@ function uwuify(inp) {
     "*starts twerking*",
     "*huggles tightly*",
     "*boops your nose*"
-  ];
-  const exclamations = ["!?", "?!!", "?!?1", "!!11", "?!?!"];
-  let text = inp;
-  patterns.forEach(pattern => text = text.replace(new RegExp(pattern[0], "gmi"), pattern[1]))
-  text = text.split(' ');
-  let out = text[0];
-  for (let x of text.slice(1)) {
-    out += " ";
-    const seed = new Seed(x);
-    if (/^(http[s]:\/\/|<@|:[a-zA-Z_\-0-9]+:)/.test(x)) {
-      out += x;
-      continue;
-    }
+    ]
+    exclamations = ["!?", "?!!", "?!?1", "!!11", "?!?!"]
+    text = inp
+    for e in patterns:
+        text = re.compile(e[0], re.I | re.M).sub(text, e[1])
+    text = text.split(" ")
+    out = text[0]
+    for x in text[1:]:
+        out += " "
+        seedd = seed.Seed(x)
+        if (re.compile("^(http[s]:\/\/|<@|:[a-zA-Z_\-0-9]+:)").search(x)):
+            out += x
+            continue
+        rand = seedd.random()
+        if (rand < settings["faces"]):
+            out += x + " " + faces[seedd.randomInt(0, len(faces) - 1)]
+        elif (rand < settings["actions"]):
+            out += x + " " + faces[seedd.randomInt(0, len(actions) - 1)]
+        elif (rand < settings["stutters"]):
+            out += (x[0] + "-") * seedd.randomInt(0, 2) + x
+        else:
+            out += x
 
-    rand = seed.random()
-    if (rand < settings.faces)
-      out += x + " " + faces[seed.randomInt(0, faces.length - 1)];
-    else if (rand < settings.actions)
-      out += x + " " + actions[seed.randomInt(0, actions.length - 1)];
-    else if (rand < settings.stutters)
-      out += (x[0] + "-").repeat(seed.randomInt(0, 2)) + x;
-    else
-      out += x;
-  }
+    text = out.split(' ')
+    out = ""
+    for x in text:
+        seedd = seed.Seed(x)
+        out = out + " " + re.compile("[?!]+$").sub(x, exclamations[seedd.randomInt(0, exclamations.length - 1)])
+    return out
 
-  text = out.split(' ')
-  out = "";
-  text.forEach(x => {
-    const seed = new Seed(x);
-    out = out + " " + x.replace(/[?!]+$/, exclamations[seed.randomInt(0, exclamations.length - 1)])
-  })
-  return out;
-}
-
-module.exports = {
-  data: new SlashCommandBuilder()
-    .setName('uwu')
-    .setDescription('Uwuifies your message!')
-    .addStringOption(option =>
-      option.setName('text')
-        .setDescription('text to uwuify')
-        .setRequired(true)),
-  execute(client, interaction) {
-    interaction.deferReply().then(() => {
-      let uwuified = uwuify(interaction.options.getString('text'));
-      if (uwuified.length < 2000) {
-        interaction.editReply(uwuified);
-        return;
-      }
-      interaction.editReply(uwuified.slice(0, 2000));
-      for (let a of client.misc.sliceby(uwuified, 2000).slice(1)) {
-        interaction.followUp(a);
-      }
-    })
-  }
-};"""
+@discord.app_commands.command(name="uwu", description='Uwuifies your message!')
+@discord.app_commands.describe(text="text to uwuify")
+async def art_gen(interaction: discord.Interaction, text:str):
+    await interaction.response.defer()
+    uwuified = uwuify(text)
+    if (len(uwuified) < 2000):
+        await interaction.response.edit_message(uwuified)
+        return
+    await interaction.response.edit_message(uwuified[0:2000])
+    for a in misc.sliceby(uwuified, 2000)[1:]:
+        interaction.followup.send(a)
