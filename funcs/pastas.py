@@ -1,75 +1,65 @@
 import misc
+import json
+import os
+from typing import SupportsIndex
 
-class replies {
-  filename;
-  data;
-  client;
-  
-  reload(){
-   this.data = JSON.parse(fs.readFileSync("data/" + this.filename, 'utf-8'));
-  }
-  
-  constructor(name, client){
-    this.filename = name;
-    this.client = client;
-    this.reload();
-  }
+class Replies():
+    def __init__(self, name:str, client) -> None:
+        self.filename = name
+        self.client = client
+        self.reload()
 
-  save() {
-    fs.writeFileSync("data/"+ this.filename, JSON.stringify(this.data))
-  }
+    def reload(self) -> None:
+        with open(os.path.join("data", self.filename), encoding="utf-8") as file:
+            self.data = json.load(file)
 
-  includes(msg, x) {
-    let out = false;
-    this.data[x].slice(2).forEach(e=>out|=msg.includes(e))
-    return out;
-  }
+    def save(self) -> None:
+        with open(os.path.join("data", self.filename), "w", encoding="utf-8") as file:
+            self.data = json.dump(file)
 
-  allowed(x, servid, chanid) {
-    let tags = this.data[x][0];
-    for(let a of tags)
-      if(this.client.misc.hastag('no'+a,servid))return false;
-    if(chanid==1063934412053557310n)return false;
-    return true;
-  }
+    def includes(self, msg:str, x:SupportsIndex) -> bool:
+        out = False
+        for e in self.data[x][2:]:
+            out = out or e in msg
+        return out
 
-  len() {
-    return this.data.length
-  }
+    def allowed(self, x:SupportsIndex, servid:SupportsIndex, chanid:SupportsIndex) -> bool:
+        tags = self.data[x][0]
+        for a in tags:
+            if self.client.misc.hashtag('no'+a, servid):
+                return False
+        if chanid == 1063934412053557310:
+            return False
+        return True
 
-  get(id) {
-    return this.data[id][1];
-  }
+    def __len__(self) -> int:
+        return len(self.data)
 
-  add(msg, reactions) {
-    this.data.push([[], msg].concat(reactions));
-    this.save();
-  }
+    def get(self, id:SupportsIndex):
+        return self.data[id][1]
 
-  findid(msg) {
-    let out = [];
-    this.data.forEach((e,i)=>{if(this.includes(msg,i))out.push(i)})
-    return out;
-  }
+    def add(self, msg, reactions):
+        self.data.append([[], msg] + reactions)
+        self.save()
 
-  addreact(id, react) {
-    this.data[id].push(react);
-    this.save();
-  }
+    def findid(self, msg) -> list:
+        out = []
+        for i in range(len(self.data)):
+            if self.includes(msg, i):
+                out.append(i)
+        return out
 
-  getreact(id) {
-    return this.data[id].slice(2);
-  }
+    def addreact(self, id:SupportsIndex, react) -> None:
+        self.data[id].append(react)
+        self.save()
 
-  setmsg(id, msg) {
-    this.data[id][1] = msg;
-    this.save();
-  }
+    def getreact(self, id:SupportsIndex):
+        return self.data[id][2:]
 
-  delet(id) {
-    this.data.splice(id, 1);
-    this.save();
-  }
-}
+    def setmsg(self, id:SupportsIndex, msg) -> None:
+        self.data[id][1] = msg
+        self.save()
 
-module.exports = replies;
+    def delet(self, id:SupportsIndex) -> None:
+        self.data.pop(id)
+        self.save()
