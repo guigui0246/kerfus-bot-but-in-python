@@ -1,5 +1,5 @@
 To import in Client tree command:
-- fun.art-gen.art_gen
+- commands.fun.art-gen.art_gen
 
 
 ----------------------------------------------------------
