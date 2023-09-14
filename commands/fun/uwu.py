@@ -76,7 +76,7 @@ def uwuify(inp):
 
 @discord.app_commands.command(name="uwu", description='Uwuifies your message!')
 @discord.app_commands.describe(text="text to uwuify")
-async def art_gen(interaction: discord.Interaction, text:str):
+async def uwu(interaction: discord.Interaction, text:str):
     await interaction.response.defer()
     uwuified = uwuify(text)
     if (len(uwuified) < 2000):

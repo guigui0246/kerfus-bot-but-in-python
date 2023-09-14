@@ -1,5 +1,7 @@
 To import in Client tree command:
 - commands.fun.art-gen.art_gen
+- commands.fun.ping.ping
+- commands.fun.uwu.uwu
 
 
 ----------------------------------------------------------
