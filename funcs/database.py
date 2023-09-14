@@ -162,13 +162,11 @@ class Database():
         if not os.path.exists(dir):
             os.makedirs(dir)
         try:
-            module_name = os.path.normpath(path).replace("/", ".").removeprefix("..").removeprefix(".")
-            module = {}
-            exec("import "+module_name+"\nmodule="+module_name, module, module)
-            module[module]
+            module_name = os.path.splitext(os.path.basename(path))[0]
+            module = __import__(module_name)
         except:
             pass
-        if not os.path.exists(path) or not (type in module or type in module[module]):
+        if not os.path.exists(path) or not module or not hasattr(module, type):
             #moving data from v1 to v2
             from_v1 = self.get_user(type, id)
             if from_v1 == "false" or from_v1 == "False":
