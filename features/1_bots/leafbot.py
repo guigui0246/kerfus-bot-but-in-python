@@ -118,6 +118,7 @@ def otherpeople(msg, client):
     msg.reply('toggled')
 
 async def run(msg, client):
+    "Leafbot really hard program"
     if msg.author.id != 1073619066272620666:
         otherpeople(msg, client)
         return
