@@ -8,6 +8,10 @@ replit.nix
 package.json
 package-lock.json
 
+#Console-discord prevention
+
+console-discord/
+
 #Python .gitignore :
 
 # Byte-compiled / optimized / DLL files
