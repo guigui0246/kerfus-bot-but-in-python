@@ -3,6 +3,7 @@ To import in Client tree command:
 - commands.fun.ping.ping
 - commands.fun.uwu.uwu
 - commands.misc.autoremind.autoremind
+- commands.misc.remind.remind
 
 
 ----------------------------------------------------------
