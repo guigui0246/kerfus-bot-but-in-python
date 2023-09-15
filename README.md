@@ -5,6 +5,15 @@ To import in Client tree command:
 - commands.misc.autoremind.autoremind
 - commands.misc.remind.remind
 
+--------------------------------------------------------
+
+This needs run from each to run:
+- features.0_deleting_stuff.bannedguilds
+- features.0_deleting_stuff.delete
+- features.0_deleting_stuff.phobics
+- features.1-bots.catbot
+- features.1-bots.gerrybot
+
 
 ----------------------------------------------------------
 
