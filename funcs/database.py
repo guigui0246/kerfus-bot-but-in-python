@@ -10,7 +10,7 @@ class Database():
         self.v2set = self.nset
         self.v2del = self.ndel
 
-    def get_user(self, type, id, defi:Any = False) -> str:
+    def getuser(self, type, id, defi:Any = False) -> str:
         """\"v1 - depracted, don't use\" -0lie\n
         It's deprecated not depracted but ok, I'll still doing it tho\n
         It gives the data from the file => .get()"""
