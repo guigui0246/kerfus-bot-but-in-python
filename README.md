@@ -13,6 +13,8 @@ This needs run from each to run:
 - features.0_deleting_stuff.phobics
 - features.1-bots.catbot
 - features.1-bots.gerrybot
+- features.1-bots.leafbot
+- features.1-bots.mathbot
 
 
 ----------------------------------------------------------
