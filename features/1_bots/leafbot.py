@@ -103,10 +103,10 @@ times = {
 }
 
 leaves = "Mint Bay Aloe Jade Monstera Yucca Sedum Heuchera Maple Flapjack Agave Echeveria Licorice Tomentosa".split(" ")
-defi = {}
+_def = {}
 
 for e in range(len(leaves)):
-    defi[e] = 0
+    _def[e] = 0
 
 def otherpeople(msg, client):
     if msg.content != "!togglebroadcastreminder":
@@ -140,7 +140,7 @@ async def run(msg, client):
             msg.channel.send(f"chance: {weight / sum[f'{temp[3]}_claim'] * 100}% ({weight}/{sum[f'{temp[3]}_claim']})")
         except:
             pass
-        user = json.loads(client.db.v2getuser("leafamount",msg.interaction.user.id,json.dumps(defi)))
+        user = json.loads(client.db.v2getuser("leafamount",msg.interaction.user.id,json.dumps(_def)))
         user[temp[2]] = 1*temp[1] + 1*(user[temp[2]])
         client.db.v2setuser("leafamount",msg.interaction.user.id,json.dumps(user))
         client.misc.log(f"{msg.interaction.user.id} {temp[3]} {temp[1]} {temp[2].lower()}", 'leaflogs.txt')
@@ -169,10 +169,10 @@ async def run(msg, client):
             msg.channel.send(f"logged transaction: {msg.interaction.user.username} -> {temp[3]}: {temp[1]}x {temp[2]}")
         except:
             pass
-        user = json.loads(client.db.v2getuser("leafamount",msg.interaction.user.id,json.dumps(defi)))
+        user = json.loads(client.db.v2getuser("leafamount",msg.interaction.user.id,json.dumps(_def)))
         user[temp[2]] = 1*user[temp[2]] -1* temp[1]
         client.db.v2setuser("leafamount",msg.interaction.user.id,json.dumps(user))
-        user = json.loads(client.db.v2getuser("leafamount",id,json.dumps(defi)))
+        user = json.loads(client.db.v2getuser("leafamount",id,json.dumps(_def)))
         user[temp[2]] = 1*user[temp[2]] + 1* temp[1]
         client.db.v2setuser("leafamount",id,json.dumps(user))
         client.misc.log(f"{msg.interaction.user.id} {id} {temp[1]} {temp[2].lower()}", 'leaflogs2.txt')
@@ -218,7 +218,7 @@ async def run(msg, client):
         temp = reg.search(msg.content)
         if temp == None:
             return
-        user = json.loads(client.db.v2getuser("leafamount",msg.interaction.user.id,json.dumps(defi)))
+        user = json.loads(client.db.v2getuser("leafamount",msg.interaction.user.id,json.dumps(_def)))
         user[temp[2]] = 1*user[temp[2]] + 1*temp[1]
         prev_leaf = leaves[leaves.indexOf(temp[2])-1]
         user[prev_leaf] = 1*user[prev_leaf] - 2*temp[1]
