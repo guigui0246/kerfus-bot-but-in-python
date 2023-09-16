@@ -15,6 +15,11 @@ This needs run from each to run:
 - features.1-bots.gerrybot
 - features.1-bots.leafbot
 - features.1-bots.mathbot
+- features.2_reactions.reactions
+- features.2_reactions.taggedreacts
+- features.3_admin.admin
+- features.4_stop.stop
+- features.5_games.chees
 
 
 ----------------------------------------------------------
