@@ -10,7 +10,7 @@ class Database():
         self.v2set = self.nset
         self.v2del = self.ndel
 
-    def getuser(self, type, id, defi:Any = False) -> str:
+    def getuser(self, type, id, _def:Any = False) -> str:
         """\"v1 - depracted, don't use\" -0lie\n
         It's deprecated not depracted but ok, I'll still doing it tho\n
         It gives the data from the file => .get()"""
@@ -20,12 +20,12 @@ class Database():
             with open(path) as file:
                 return file.read()
         else:
-            if defi:
+            if _def:
                 if not os.path.exists(dir):
                     os.makedirs(dir)
                 with open(path, "w") as file:
-                    json.dump(defi, file)
-            return json.dumps(defi)
+                    json.dump(_def, file)
+            return json.dumps(_def)
 
     def setuser(self, type, id, setto) -> None:
         """Set something to the user file
@@ -50,7 +50,7 @@ class Database():
             except:
                 pass
 
-    def get(self, id, defi) -> str:
+    def get(self, id, _def) -> str:
         """Get the data from the file
         Also v1 deprecated but 0lie didn't write it"""
         dir = os.path.join(self.dirname, "other")
@@ -62,8 +62,8 @@ class Database():
             if not os.path.exists(dir):
                 os.makedirs(dir)
             with open("path", "w") as file:
-                json.dump(defi, file)
-            return json.dumps(defi)
+                json.dump(_def, file)
+            return json.dumps(_def)
 
     def set(self, id, setto) -> None:
         """Set the data into the file
@@ -78,7 +78,7 @@ class Database():
             else:
                 file.write(str(setto))
 
-    def gettype(self, type, id, defi:Any = False):
+    def gettype(self, type, id, _def:Any = False):
         """Get the type using the type ?\n
         You should use better variable names 0lie"""
         dir = os.path.join(self.dirname, str(type))
@@ -87,12 +87,12 @@ class Database():
             with open(path) as file:
                 return file.read()
         else:
-            if defi:
+            if _def:
                 if not os.path.exists(dir):
                     os.makedirs(dir)
                 with open("path", "w") as file:
-                    json.dump(defi, file)
-            return defi
+                    json.dump(_def, file)
+            return _def
 
     def settype(self, type, id, setto) -> None:
         """Set the type"""
@@ -115,7 +115,7 @@ class Database():
             except:
                 pass
 
-    def nget(self, id, defi:Any = False):
+    def nget(self, id, _def:Any = False):
         """\"v2\" - 0lie
         Can you please say v2 of what ????"""
         path = os.path.join(self.dirname, id)
@@ -124,12 +124,12 @@ class Database():
             with open(path) as file:
                 return file.read()
         else:
-            if defi:
+            if _def:
                 if not os.path.exists(dir):
                     os.makedirs(dir)
                 with open(path, "w") as file:
-                    file.write(defi)
-            return defi
+                    file.write(_def)
+            return _def
 
     def nset(self, id, setto):
         """Set the data into the file
@@ -185,17 +185,17 @@ class Database():
                     json.dump(data, file)
         return module[module]
 
-    def v2getuser(self, type, id, defi:Any = False):
+    def v2getuser(self, type, id, _def:Any = False):
         """v2 get user"""
         data = self.v2_loaduser(type, id)
         if type is data:
             return data[type]
-        if defi:
-            data[type] = defi
+        if _def:
+            data[type] = _def
             path = os.path.join(self.dirname, "users", f"{id}.json")
             with open(path, "w") as file:
                 json.dump(data, file)
-            return defi
+            return _def
         return None
 
     def v2setuser(self, type, id, setto):
