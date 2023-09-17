@@ -10,6 +10,6 @@ async def autoremind(interaction: discord.Interaction, config:int):
         await interaction.response.send_message('settings changed', ephemeral=True)
     except:
         pass
-    sett = json.loads(interaction.client.db.v2getuser("settings", interaction.user.id, {"autoremind":{"time":300}}))
+    sett = json.loads(interaction.client.db.v2getuser("settings", interaction.user.id, '{"autoremind":{"time":300}}'))
     sett.autoremind.time = config
     interaction.client.db.v2setuser("settings", interaction.user.id, json.dumps(sett))
