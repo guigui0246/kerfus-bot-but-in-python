@@ -23,6 +23,8 @@ This needs run from each to run:
 - features.5_games.kreski
 - features.5_games.sweeper
 - features.6_misc.!test
+- features.6_misc.2137
+- features.6_misc.brainf
 
 
 ----------------------------------------------------------
