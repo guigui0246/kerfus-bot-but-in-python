@@ -7,7 +7,13 @@ if %errorlevel% equ 0 (
     echo Python is not installed.
     echo Installing Python.
     call python_install.bat
-    echo Python installed.
+    where python > nul 2>&1
+    if %errorlevel% equ 0 (
+        echo Python installed.
+    ) else (
+        echo Failed to install Python
+        exit -1
+    )
 )
 
 python -m ensurepip --upgrade
