@@ -22,6 +22,7 @@ This needs run from each to run:
 - features.5_games.chees
 - features.5_games.kreski
 - features.5_games.sweeper
+- features.6_misc.!test
 
 
 ----------------------------------------------------------
