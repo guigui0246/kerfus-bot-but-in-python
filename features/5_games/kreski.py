@@ -97,3 +97,4 @@ def run(msg, client):
     switch["undo"] = case
     del case
     switch[msg.content.split(' ')[0][2:].lower()]()
+    del switch
