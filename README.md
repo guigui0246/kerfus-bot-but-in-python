@@ -21,6 +21,7 @@ This needs run from each to run:
 - features.4_stop.stop
 - features.5_games.chees
 - features.5_games.kreski
+- features.5_games.sweeper
 
 
 ----------------------------------------------------------
