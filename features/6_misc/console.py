@@ -170,7 +170,7 @@ def _run(msg, client):
             if char == " " and quo == '0':
                 args.append(curr)
                 curr = ""
-                while text[i] == " "
+                while text[i] == " ":
                     i += 1
                 i -= 1
             else:
