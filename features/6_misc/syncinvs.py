@@ -33,7 +33,7 @@ def run(msg, client):
     import time as now
     for e in ids:
         time = client.db.v2getuser("leafSyncTime", e)
-        if time and now.time() - time < sync_time * 3600 * 1000:
+        if time and now.time() - time < sync_time * 3600:
             continue
         synced = False
         try:
