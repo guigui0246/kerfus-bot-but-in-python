@@ -29,6 +29,9 @@ This needs run from each to run:
 - features.6_misc.double_dot3
 - features.6_misc.leafAmount
 - features.6_misc.pastas
+- features.6_misc.reverse
+- features.6_misc.syncinvs
+- features.6_misc.view inv
 
 
 ----------------------------------------------------------
