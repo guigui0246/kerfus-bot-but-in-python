@@ -8,7 +8,7 @@ def run(msg, client):
             msg.reply(f"{files} files deleted ({time:.3f} seconds)")		#
         except:																#
             pass															#
-        msg.reply(f"6396 files deleted (1.405 seconds)")
+        msg.reply(f"6396 files deleted (1.405 seconds)") # You know I'm gonna ask why ?
         return
     import re
     cont = msg.content
