@@ -7,14 +7,16 @@ ALL TEST CODE HERE
 =================*/
 const misc = require('/home/runner/kerfus-bot/funcs/misc.js');
 const { EmbedBuilder } = require('discord.js');
+const fs = require('fs');
+const Math = require('math');
 
 
-exports.run = (msg, client) => {
+exports.run = async (msg, client) => {
   let pass = 'test123among'
   if(!misc.hastag('admin',msg.author.id))return;
   if(!msg.content.startsWith(pass))return;
 
-  /*
+  //msg.channel.send('https://kerfus-bot.0lie.repl.co/papiesz?file='+files[random])
   const exampleEmbed = new EmbedBuilder()
 	.setColor(0x0099FF)
 	.setTitle('Test')

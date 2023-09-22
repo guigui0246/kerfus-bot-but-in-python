@@ -1,8 +1,8 @@
-let permlist = [["admin"],["religia"]];
+let permlist = [["admin"],["admin-view"], /*["religia"] removed*/];
 let client;
 
 function getpermissions(username){
-  let usr = client.webdb.v2getuser("users",username);
+  let usr = client.webdb.v2getuser("account",username);
   if(!usr)return {};
   usr = JSON.parse(usr)
   let perms = usr.tags;
@@ -34,14 +34,16 @@ function getpermissions(username){
 function use(req,res,next){
   if(!req.cookies.password||!req.cookies.username){next();return;}
   let newpass = require('js-sha512').sha512(req.cookies.password);
-  let usr = client.webdb.v2getuser("users",req.cookies.username)
+  let usr = client.webdb.v2getuser("account",req.cookies.username)
   if(!usr){next();return;}
   usr=JSON.parse(usr);
   if(newpass != usr.password){next();return;}
   req.user = usr;
   req.user.perms = getpermissions(req.cookies.username);
+  //console.log(req.user);
   next();
 }
+
 module.exports = (c)=>{
   client = c;
   return use;

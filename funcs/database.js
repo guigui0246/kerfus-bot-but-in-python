@@ -87,7 +87,7 @@ class database {
   }
 
   //v2
-  nget(id, def = false) {
+  v2get(id, def = false) {
     let path = `${this.dirname}${id}`;
     let dir = path.split('/').slice(0, -1).join('/');
     if (fs.existsSync(path)) {
@@ -101,7 +101,7 @@ class database {
       return def;
     }
   }
-  nset(id, setto) {
+  v2set(id, setto) {
     let path = `${this.dirname}${id}`;
     let dir = path.split('/').slice(0, -1).join('/');
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
@@ -109,14 +109,11 @@ class database {
     fs.writeFileSync(path, `${setto}`);
     return this;
   }
-  ndel(id) {
+  v2del(id) {
     let path = `${this.dirname}${id}`;
     if (fs.existsSync(path)) fs.unlink(path, (err) => { });
     return this;
   }
-  v2get = this.nget;
-  v2set = this.nset;
-  v2del = this.ndel;
 
   v2_loaduser(type, id) {
     let dir = `${this.dirname}users/`;
@@ -135,7 +132,7 @@ class database {
       } //</moving data>
       else {
         let data = (fs.existsSync(path) ? require(path) : {});
-        fs.writeFileSync(path, JSON.stringify(data));
+        return data
       }
     }
     return require(path);

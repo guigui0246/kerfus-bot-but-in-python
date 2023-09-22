@@ -6,9 +6,6 @@ class Database():
     """Probably a database for everything the bot needs"""
     def __init__(self, name:str) -> None:
         self.dirname = name
-        self.v2get = self.nget
-        self.v2set = self.nset
-        self.v2del = self.ndel
 
     def getuser(self, type, id, _def:Any = False) -> str:
         """\"v1 - depracted, don't use\" -0lie\n
@@ -115,7 +112,7 @@ class Database():
             except:
                 pass
 
-    def nget(self, id, _def:Any = False):
+    def v2get(self, id, _def:Any = False):
         """\"v2\" - 0lie
         Can you please say v2 of what ????"""
         path = os.path.join(self.dirname, id)
@@ -131,7 +128,7 @@ class Database():
                     file.write(_def)
             return _def
 
-    def nset(self, id, setto):
+    def v2set(self, id, setto):
         """Set the data into the file
         Also v2 but 0lie didn't write it"""
         path = os.path.join(self.dirname, str(id))
@@ -142,7 +139,7 @@ class Database():
             file.write(str(setto))
         return self
 
-    def ndel(self, id):
+    def v2del(self, id):
         """New delete"""
         path = os.path.join(self.dirname, str(id))
         if os.path.exists(path):
@@ -181,8 +178,7 @@ class Database():
             else:
                 #</moving data>
                 data = module[module] if os.path.exists(path) else {}
-                with open(path, "w") as file:
-                    json.dump(data, file)
+                return data
         return module[module]
 
     def v2getuser(self, type, id, _def:Any = False):

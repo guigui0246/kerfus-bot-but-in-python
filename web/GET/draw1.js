@@ -6,11 +6,13 @@ for(let i=0;i<n;i++){
     def[i].push('000000')
 }
 exports.run = (client,res,req,data) => {
-  if(req.query.type==-1){
-    let ret = client.webdb.v2get('other/drawmap',def);
+  if(!('type' in req.query))return 'stop';
+  if(req.query.type<0){
+    let ret = client.webdb.v2get('other/drawmap',JSON.stringify(def));
     res.send(ret);
   }else{
     if(req.query.type>n*m-1){res.send('ERR: wrong position');return 'stop';}
+    if(!('col' in req.query))return 'stop';
     let ret = JSON.parse(client.webdb.v2get('other/drawmap',JSON.stringify(def)));
     let allowed = /#?[a-zA-Z0-9]{6}/.test(req.query.col)
     let col = req.query.col;

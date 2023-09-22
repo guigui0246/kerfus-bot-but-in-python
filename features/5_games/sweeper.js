@@ -1,8 +1,6 @@
 let math = require('math');
-let games = {};
 const def_size = 5;
 const mineamount = 0.2;
-let mta = {}; //minetypaamount
 const outsize = 5;
 
 function isNumeric(n){return !isNaN(parseFloat(n)) && isFinite(n);}
@@ -45,7 +43,6 @@ exports.run = (msg, client) => {
   if(!msg.content.toLowerCase().startsWith('m!')) return;
   let args = msg.content.split(' ').slice(1);
   
-  let player = {"board":games[msg.author.id],"mta":mta[msg.author.id]};
   let player = JSON.parse(client.db.v2getuser("sweeper",msg.author.id))
   switch(msg.content.split(' ')[0].slice(2).toLowerCase()){
     case 'start':{

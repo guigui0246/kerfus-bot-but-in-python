@@ -2,17 +2,17 @@ const fs = require('fs');
 let client;
 exports.setup = (a) => {
   client = a;
-  let n = 1*client.db.nget('other/remindercount');
+  let n = 1*client.db.v2get('other/remindercount');
   let reminders = [];
   for(let x=400;x<n;x++){
-    let temp=client.db.nget(`reminder/${x}`);
+    let temp=client.db.v2get(`reminder/${x}`);
     if(temp)reminders.push(JSON.parse(temp).concat(x))
   }
   reminders.forEach(e=>{
     setTimeout(()=>{
       client.users.fetch(e[0]).then(user=>user.send(e[2]).catch(err=>{}));
-      client.db.ndel(`reminder/${e[3]}`)
-    },e[1]-1*new Date())
+      client.db.v2del(`reminder/${e[3]}`)
+    },Number(BigInt(e[1])-BigInt(1*new Date())))
   })
   return exports;
 }
@@ -89,12 +89,12 @@ function replace4html(inp){
 exports.replace4html = replace4html;
 
 exports.remind = (time, user, message)=>{
-  let numb = 1*client.db.nget('other/remindercount',0);
-  client.db.nset('other/remindercount',`${numb+1}`);
-  let timeend = time*1000+1*new Date();
-  client.db.nset(`reminder/${numb}`,JSON.stringify([user.id,timeend,message]))
+  let numb = 1*client.db.v2get('other/remindercount',0);
+  client.db.v2set('other/remindercount',`${numb+1}`);
+  let timeend = time*1000n+BigInt(+new Date());
+  client.db.v2set(`reminder/${numb}`,JSON.stringify([user.id,`${timeend}`,message]))
   setTimeout(()=>{
     user.send(message).catch(err=>{});
-    client.db.ndel(`reminder/${numb}`)
-  },time*1000);
+    client.db.v2del(`reminder/${numb}`)
+  },Number(time*1000n));
 }

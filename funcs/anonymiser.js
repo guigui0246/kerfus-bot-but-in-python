@@ -1,3 +1,4 @@
+//Deleted by 0lie
 const fs = require('fs');
 
 function wordAt(word,at){

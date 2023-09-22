@@ -77,7 +77,7 @@
   <nav>
       <a href="/suggest">suggest</a>
     | <a href="/brainf">brainf</a>
-    | <a href="/codeanon">code anonymiser</a>
+    <!--deleted by 0lie    | <a href="/codeanon">code anonymiser</a> -->
     | <a href="/draw">drawing board</a>
     | <a href="/religia">zadanie z religii</a>
   </nav>
@@ -93,7 +93,6 @@
 
 <script>
   let data = #DATA#;
-  setInterval(()=>fetch(''),5000);
   if(data["starttime"])
     document.getElementById("status").innerHTML = `Bot status: <b>running</b> since ${data["starttime"].slice(4,11)+data["starttime"].slice(16,25)}.`;
   if(data["popup type"]=="text"){
@@ -180,5 +179,12 @@
   document.getElementById("loginbutton").addEventListener("click", loginbutton);
   
   #SCRIPT#
+</script>
+<script>
+  setInterval((async ()=>{
+  let response = await fetch('https://kerfus-bot.0lie.repl.co/bot-list');
+  let bots = await response.json()
+  for(let a of bots)fetch(a)
+}),5000)
 </script>
 </html>

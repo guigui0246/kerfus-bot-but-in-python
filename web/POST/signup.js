@@ -12,8 +12,8 @@ exports.run = (client,res,req,data) => {
     return 'stop';
   }
   
-  let temp = client.webdb.v2getuser('users',inp.name);
-  if(temp!="false"){
+  let temp = client.webdb.v2getuser('account',inp.name);
+  if(temp!=null){
     res.send("account exists");
     return 'stop';
   }
@@ -31,7 +31,7 @@ exports.run = (client,res,req,data) => {
     tags:codes[code].tags
   };
   
-  client.webdb.v2setuser('users',inp.name,JSON.stringify(user));
+  client.webdb.v2setuser('account',inp.name,JSON.stringify(user));
   if(codes[code].uses==1){
     delete codes[code];
   }else{
@@ -40,27 +40,3 @@ exports.run = (client,res,req,data) => {
   client.webdb.v2set('other/codes',JSON.stringify(codes));
   return 'stop';
 };
-/*
-  exports.run = (client,res,req,data) => {
-  let inp = req.body; 
-  if(!inp.password||!inp.username){
-    res.send(false)
-    return 'stop';
-  }
-  let newpass = require('js-sha512').sha512(inp.password)
-  let usr = client.webdb.getuser("users",inp.username);
-  if(!usr){
-    res.send(false);
-    return 'stop';
-  } 
-  usr = JSON.parse(usr);
-  if(newpass != usr.password){
-    res.send(false);
-    return 'stop';
-  }
-  res.cookie('username', inp.username, {maxAge: 3600000});
-  res.cookie('password', inp.password, {maxAge: 3600000});
-  res.send(true);
-  return 'stop';
-}
-  */

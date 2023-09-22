@@ -20,7 +20,7 @@ class Replies():
     def save(self) -> None:
         "Save to file"
         with open(os.path.join("data", self.filename), "w", encoding="utf-8") as file:
-            self.data = json.dump(file)
+            self.data = json.dump(file, indent=2)
 
     def includes(self, msg:str, x:SupportsIndex) -> bool:
         "Test for the presence of a copypasta in the msg"
@@ -36,7 +36,7 @@ class Replies():
         for a in tags:
             if self.client.misc.hashtag('no'+a, servid):
                 return False
-        if chanid == 1063934412053557310:
+        if self.client.misc.hastag('nopastas',servid) or self.client.misc.hastag('nopastas',chanid):
             return False
         return True
 

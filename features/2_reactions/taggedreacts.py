@@ -2,30 +2,8 @@ import random
 
 async def run(msg, client):
     "react to tag"
-    if client.misc.hastag("woman", msg.author.id):
-        try:
-            msg.react('☕')
-        except:
-            pass
-    if client.misc.hastag("delikot", msg.author.id):
-        try:
-            msg.react('🐱')
-        except:
-            pass
-    if client.misc.hastag("littlehawk", msg.author.id):
-        try:
-            msg.react('🦅')
-        except:
-            pass
-    if client.misc.hastag("🐢", msg.author.id):
-        try:
-            msg.react('🐢')
-        except:
-            pass
-        try:
-            msg.react('1129926033768988724')
-        except:
-            pass
+    if client.misc.hastag('nopastas', msg.guild.id if msg.guild else 0) or client.misc.hastag('nopastas',msg.channel.id):
+        return False
     if msg.author.bot:
         try:
             msg.react('🐱')
@@ -36,8 +14,18 @@ async def run(msg, client):
             msg.react('🐱')
         except:
             pass
-    if client.misc.hastag("weirdcat", msg.author.id):
-        try:
-            msg.react('1129116659194531930')
-        except:
-            pass
+    for x in [
+        ['woman','☕'],
+        ['delikot','🐱'],
+        ['littlehawk','🦅'],
+        ['🐢','🐢','1129926033768988724'],
+        ['weirdcat','1129116659194531930'],
+        ['wiktoria','✨'],
+        ['fart','🇫','🇦','🇷','🇹']
+    ]:
+        if client.misc.hastag(x[0],msg.author.id):
+            for y in x[1:]:
+                try:
+                    msg.react(y)
+                except:
+                    pass

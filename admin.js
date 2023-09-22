@@ -21,7 +21,7 @@ exports.run = (comm, args, client) => {
         setTimeout(() => channel.messages.fetch({ limit: 1 }).then(msgs => msgs.first().delete()), args[1]);
       })
     break; case "addmessage":
-      pasta.add(args[0], args.slice(1, args.length - 1));
+      pasta.add(args[0], args.slice(1, args.length));
     break; case "findmessage":
       let id = pasta.findid(args[0]);
       if (id.length == 0) out = ["reply", "message not found :("];

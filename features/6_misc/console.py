@@ -87,7 +87,7 @@ def _run(msg, client):
         temp = " ".join(args)
         temp = temp.replace("~","/home/runner/kerfus-bot")
         temp = temp if temp[0] == '/' else (data.dir + temp)
-        if not sudo and not temp.startswith(f"/home/runner/kerfus-bot/personal/{msg.author.id}"):
+        if not sudo:
             msg.reply('access error')
             return 'access error'
         import os

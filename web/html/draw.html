@@ -1,10 +1,11 @@
 TITLE##
-Kerfuś - test
+Kerfuś - draw
 ##STYLE##
 ##BODY##
 <p id='map'></p>
 
 <textarea id='inp'>input color here</textarea>
+(find colors <a href="https://www.w3schools.com/colors/colors_picker.asp">here</a>)
 ##SCRIPT##
 //<script>
 let map = "";
@@ -21,7 +22,10 @@ let xmlHttp;
 for(let x=0;x<n;x++){
   for(let y=0;y<m;y++){
     document.getElementById(x*m+y*1).onclick=()=>{
-      let newcolor = document.getElementById('inp').value.trim().slice(0,6)
+      let newcolor = document.getElementById('inp').value.trim();
+      if(newcolor[0]=='#')newcolor=newcolor.slice(1,7);
+      else newcolor=newcolor.slice(0,6);
+      console.log(newcolor);
       document.getElementById(m*x+1*y).style= `background-color: #${newcolor};`;
       xmlHttp.open("GET", 'https://kerfus-bot.0lie.repl.co/draw1?type='+(x*m+y*1)+'&col='+newcolor);
       xmlHttp.send();

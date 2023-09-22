@@ -4,7 +4,7 @@ exports.run = (client,res,req,data) => {
   data['send'] = 'admin';
   data["popup"] = "wrong password";
   data["popup type"] = "text";
-  if(!req.user||!req.user.tags.admin)return;
+  if(!req.user||!req.user.perms.admin)return;
   let out = false;
   switch(req.body.comm){
     case 'createcode':

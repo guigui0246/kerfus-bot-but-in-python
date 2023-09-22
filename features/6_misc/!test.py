@@ -9,16 +9,17 @@ ALL TEST CODE HERE
 from ...funcs import misc
 import discord
 
-def run(msg, client):
+async def run(msg, client):
     "test run"
     _pass = "test123among"
     if not misc.hashtag('admin',msg.author.id):
         return
     if not msg.content.startswith(_pass):
         return
-    
 
-    """
+
+    #msg.channel.send('https://kerfus-bot.0lie.repl.co/papiesz?file='+files[random])
+
     exampleEmbed = discord.embeds.Embed(color=0x0099FF, title='Test', url='https://discord.js.org/', description='Some description here')
     exampleEmbed.set_author(name= msg.author.username + '#' + msg.author.discriminator, icon_url= 'https://cdn.discordapp.com/avatars/'+msg.author.id+'/'+msg.author.avatar+'.webp?size=32')
     exampleEmbed.set_thumbnail('https://i.imgur.com/AfFp7pu.png')
@@ -26,7 +27,7 @@ def run(msg, client):
     exampleEmbed.add_field(**{"name": 'Inline field title', "value": 'Some value here', "inline": True })
     exampleEmbed.set_footer(**{"text": 'Some footer text here', "iconURL": 'https://i.imgur.com/AfFp7pu.png'})
     msg.channel.send({"embeds":[exampleEmbed]})
-    """
+    #"""
 
     #async def send():
     #    import asyncio

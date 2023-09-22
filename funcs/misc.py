@@ -9,11 +9,11 @@ def setup (a) -> dict[str, Any]:
     "Setup of a client"
     global client
     client = a
-    n = 1*client.db.nget('other/remindercount')
+    n = 1*client.db.v2get('other/remindercount')
     reminders = []
     loop = asyncio.get_event_loop()
     async def process_reminder(client, x):
-        temp = await client.db.nget(f"reminder/{x}")
+        temp = await client.db.v2get(f"reminder/{x}")
         if temp:
             reminder_data = json.loads(temp)
             reminders.append(reminder_data)
@@ -23,7 +23,7 @@ def setup (a) -> dict[str, Any]:
                 await user.send(reminder_data[2])
             except:
                 pass
-            await client.db.ndel(f"reminder/{reminder_data[3]}")
+            await client.db.v2del(f"reminder/{reminder_data[3]}")
     for x in range(400, n):
         loop.create_task(process_reminder(client, x))
     loop.run_forever()
@@ -111,15 +111,15 @@ def replace4html(inp):
 
 async def remind(timer, user, message:str):
     "Make a reminder after a certain time for a specific client"
-    numb = int(await client.db.nget('other/remindercount', 0))
-    await client.db.nset('other/remindercount', str(numb + 1))
+    numb = int(await client.db.v2get('other/remindercount', 0))
+    await client.db.v2set('other/remindercount', str(numb + 1))
     timeend = timer * 1000 + int(time.time() * 1000)
-    await client.db.nset(f'reminder/{numb}', json.dumps([user.id, timeend, message]))
+    await client.db.v2set(f'reminder/{numb}', json.dumps([user.id, f"{timeend}", message]))
     async def send_reminder():
-        await asyncio.sleep(timer)
+        await asyncio.sleep(float(timer))
         try:
             await user.send(message)
         except:
             pass
-        await client.db.ndel(f'reminder/{numb}')
+        await client.db.v2del(f'reminder/{numb}')
     asyncio.create_task(send_reminder())

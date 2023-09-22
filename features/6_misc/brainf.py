@@ -5,7 +5,6 @@ def run(msg, client):
     if not msg.content.swartswith('!brainf'):
         return
     instance = brainf.createinstance([msg.content[8] == 1, msg.content[9] == 1, msg.content[10] == 1])
-    print(msg.content.split('&'))
     runtime = msg.content.split("&")[1]
     input = msg.content.split("&")[2]
     code = msg.content.split("&")[3]

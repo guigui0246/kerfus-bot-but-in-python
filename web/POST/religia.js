@@ -1,3 +1,4 @@
+//deleted by 0lie
 var CryptoJS = require("crypto-js");
 
 exports.run = (client,res,req,data) => {

@@ -29,6 +29,7 @@ expr()
   .use(require('cors')({origin:'*'}))
   .use(require('cookie-parser')())
   .use(expr.json())
+  .use(require('./web/firefox.js'))
   .use(require('./web/login.js')(client))
   .all(/.*/,(req,res)=>{
     let data = {
@@ -48,15 +49,18 @@ expr()
   })
   .listen(3000, () => console.log('host working'));
 // ===================================== BOT =====================================
-(async ()=>client.db.v2get('other/servers.txt').split('\n').forEach(e=>
-  rest.put(
-    Routes.applicationGuildCommands(process.env['APP_ID'],e),
-    {body:commands}
-  )
-))()
 client.on('ready', async () => {
     console.log('bot working')
     starttime = new Date().toUTCString()
+    for(let a in features)
+      for(let b of features[a])
+        if("setup" in b)
+          b.setup(client);
+  client.db.v2get('other/servers.txt').split('\n').forEach(e=>
+    rest.put(
+      Routes.applicationGuildCommands(client.application.id,e),
+      {body:commands}
+    ))
   })
   .on("guildCreate", g => misc.log(`added to server id ${g.id}`))
   .on('messageCreate', msg => {
@@ -71,4 +75,3 @@ client.on('ready', async () => {
   })
   .login(process.env['DISCORD_BOT_SECRET'])
 // ==================================== TEST  ====================================
-setInterval(()=>fs.appendFileSync('alivelogs.txt',`${1*new Date()}\n`),300000)

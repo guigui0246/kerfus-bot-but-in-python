@@ -1,3 +1,4 @@
+//Removed by 0lie
 exports.run = async (msg, client) => {
   return;
   if (msg.author.id != 1119928094418018354n) return;

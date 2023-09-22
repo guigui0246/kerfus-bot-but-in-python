@@ -14,7 +14,6 @@ This needs run from each to run:
 - features.1-bots.catbot
 - features.1-bots.gerrybot
 - features.1-bots.leafbot
-- features.1-bots.mathbot
 - features.2_reactions.reactions
 - features.2_reactions.taggedreacts
 - features.3_admin.admin

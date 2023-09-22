@@ -3,10 +3,8 @@ The catch is that what's shown is using cosinu, sinus and rounding\n
 Now please give me size !!!"""
 import math
 
-games = {}
 DEF_SIZE = 5
 MINEAMOUNT = 0.2
-mta = {} #minetypaamount #idk what's a minetypaamount but probably a mine type amount
 OUTSIZE = 5
 
 isNumeric = math.isfinite
@@ -50,7 +48,6 @@ def run(msg, client):
     if not msg.content.lower().startswith('m!'):
         return
     args = msg.content.split(' ')[1:]
-    player = {"board":games[msg.author.id],"mta":mta[msg.author.id]} #Why ???, it's just gonna make an error
     player = json.loads(client.db.v2getuser("sweeper",msg.author.id))
     switch = {}
     def case():

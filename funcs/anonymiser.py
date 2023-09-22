@@ -1,3 +1,4 @@
+"deleted by 0lie"
 from sys import stderr
 
 import re

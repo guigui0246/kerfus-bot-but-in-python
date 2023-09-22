@@ -17,7 +17,7 @@ class replies {
   }
 
   save() {
-    fs.writeFileSync("data/"+ this.filename, JSON.stringify(this.data))
+    fs.writeFileSync("data/"+ this.filename, JSON.stringify(this.data,null,2))
   }
 
   includes(msg, x) {
@@ -30,7 +30,7 @@ class replies {
     let tags = this.data[x][0];
     for(let a of tags)
       if(this.client.misc.hastag('no'+a,servid))return false;
-    if(chanid==1063934412053557310n)return false;
+    if(this.client.misc.hastag('nopastas',servid)||this.client.misc.hastag('nopastas',chanid))return false;
     return true;
   }
 

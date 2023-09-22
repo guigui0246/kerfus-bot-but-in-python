@@ -1,3 +1,4 @@
+"Removed by 0lie"
 import re
 
 async def run(msg, client):
