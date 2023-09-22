@@ -31,6 +31,7 @@ This needs run from each to run:
 - features.6_misc.reverse
 - features.6_misc.syncinvs
 - features.6_misc.view inv
+- features.6_misc.papiesz
 
 
 ----------------------------------------------------------
