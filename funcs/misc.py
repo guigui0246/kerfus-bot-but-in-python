@@ -81,7 +81,10 @@ def log(text:str, filepath:str="logs.txt"):
 def polishchars(text:str) -> str:
     """Change strange char to other char\n
     Only affects : ęóąśłżźćń
-    not ç or á because 0lie decided that"""
+    not ç or á because 0lie decided that\n
+    can be changed by removing the comments in funcs/misc.py"""
+    #import unidecode
+    #return unidecode.unidecode(text)
     copy = text
     polish = "ęóąśłżźćń"
     fixed = "eoaslzzcn"

@@ -22,3 +22,4 @@ pip install discord
 pip install datetime
 pip install asyncio
 pip install typing
+pip install unidecode
