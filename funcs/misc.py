@@ -4,8 +4,9 @@ import json
 import time
 import asyncio
 import re
+import discord
 
-def setup (a) -> dict[str, Any]:
+def setup (a:discord.Client) -> dict[str, Any]:
     "Setup of a client"
     global client
     client = a
